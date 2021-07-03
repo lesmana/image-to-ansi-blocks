@@ -1,0 +1,15 @@
+image to ascii pixelwise
+
+not best effort dither using ascii chars
+
+but pixel for pixel to ascii chars
+
+using upper half block and lower half block
+
+https://en.wikipedia.org/wiki/Block_Elements
+
+using foreground and background color
+
+effectively two pixels in one ascii char
+
+cat image from https://www.favicon.cc/?action=icon&file_id=851700
