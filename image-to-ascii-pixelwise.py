@@ -6,7 +6,7 @@ import pprint
 
 from PIL import Image
 
-with Image.open('cat.ico') as im:
+with Image.open('mario.ico') as im:
   pixels = im.getdata()
   width = im.width
   height = im.height
@@ -35,14 +35,6 @@ for upperrow, lowerrow in doublerows:
     #print(upperpixel, lowerpixel)
     ur, ug, ub, ua = upperpixel
     lr, lg, lb, la = lowerpixel
-    # for now this just looking at alpha ignoring color completely
-    if ua == 0 and la == 0:
-      sys.stdout.write(noblock)
-    elif ua == 0 and la == 255:
-      sys.stdout.write(lowerhalfblock)
-    elif ua == 255 and la == 0:
-      sys.stdout.write(upperhalfblock)
-    elif ua == 255 and la == 255:
-      sys.stdout.write(fullblock)
-  sys.stdout.write('\n')
-
+    # ignore alpha for now
+    sys.stdout.write(f'\033[38;2;{ur};{ug};{ub};48;2;{lr};{lg};{lb}m\u2580')
+  sys.stdout.write('\033[0m\n')
