@@ -36,5 +36,5 @@ for upperrow, lowerrow in doublerows:
     ur, ug, ub, ua = upperpixel
     lr, lg, lb, la = lowerpixel
     # ignore alpha for now
-    sys.stdout.write(f'\033[38;2;{ur};{ug};{ub};48;2;{lr};{lg};{lb}m\u2580')
+    sys.stdout.write(f'\033[38;2;{ur:03};{ug:03};{ub:03};48;2;{lr:03};{lg:03};{lb:03}m\u2580')
   sys.stdout.write('\033[0m\n')
