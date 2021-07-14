@@ -6,7 +6,13 @@ import pprint
 
 from PIL import Image
 
-with Image.open('mario.ico') as im:
+try:
+  filename = sys.argv[1]
+except:
+  print('need argument: filename of image')
+  sys.exit(1)
+
+with Image.open(filename) as im:
   pixels = im.getdata()
   width = im.width
   height = im.height
