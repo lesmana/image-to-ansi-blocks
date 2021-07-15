@@ -35,3 +35,14 @@ examples:
 cat image from https://www.favicon.cc/?action=icon&file_id=851700
 
 mario https://www.favicon.cc/?action=icon&file_id=962351
+
+license:
+--------
+
+Copyright Lesmana Zimmer lesmana@gmx.de
+
+This program is free software.
+It is licensed under the WTFPL version 2.
+That means that you can do what the fuck
+you want to with this program.
+For details see http://www.wtfpl.net/about/
