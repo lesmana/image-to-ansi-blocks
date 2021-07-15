@@ -49,4 +49,6 @@ for upperrow, lowerrow in doublerows:
       sys.stdout.write(f'\033[38;2;{ur};{ug};{ub}m' + upperhalfblock + '\033[0m')
     elif ua == 255 and la == 255:
       sys.stdout.write(f'\033[38;2;{ur};{ug};{ub};48;2;{lr};{lg};{lb}m' + upperhalfblock + '\033[0m')
+    else:
+      raise Exception(f'unexpected alpha value: {ua}, {la}')
   sys.stdout.write('\n')
