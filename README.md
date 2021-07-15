@@ -1,4 +1,5 @@
 image to ascii pixelwise
+========================
 
 image is translated pixel for pixel to ascii chars
 
@@ -15,18 +16,21 @@ using foreground and background color
 effectively two pixels in one ascii char
 
 limitations:
+------------
 
 only rgb color which may or may not be supported by your terminal
 
 alpha channel is expected to be either 0 or 255
 
 requirements:
+-------------
 
 python3
 
 PIL/Pillow
 
 examples:
+---------
 
 cat image from https://www.favicon.cc/?action=icon&file_id=851700
 
