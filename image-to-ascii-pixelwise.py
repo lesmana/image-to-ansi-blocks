@@ -46,6 +46,14 @@ for upperrow, lowerrow in doublerows:
     #print(upperpixel, lowerpixel)
     ur, ug, ub, ua = upperpixel
     lr, lg, lb, la = lowerpixel
+    if ua < 128:
+      ua = 0
+    if ua >= 128:
+      ua = 255
+    if la < 128:
+      la = 0
+    if la >= 128:
+      la = 255 
     if ua == 0 and la == 0:
       sys.stdout.write(noblock)
     elif ua == 0 and la == 255:
