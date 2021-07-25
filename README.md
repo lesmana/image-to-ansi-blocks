@@ -1,11 +1,8 @@
-image to ascii pixelwise
-========================
+image to ansi blocks
+====================
 
-image is translated pixel for pixel to ascii chars
-
-unicode chars to be exact
-
-chars that can be displayed in a terminal
+translate image pixel by pixel to ansi blocks
+so that it can be displayed in terminal.
 
 using upper half block and lower half block
 
@@ -18,9 +15,13 @@ effectively two pixels in one ascii char
 limitations:
 ------------
 
-only rgb color which may or may not be supported by your terminal
+only rgb color which may or may not be supported by your terminal.
+see here for list of terminal supporting rgb:
+https://gist.github.com/XVilka/8346728
 
-alpha channel is expected to be either 0 or 255
+terminal has no transparency.
+for now alpha value below 128 is translated to terminal background color.
+alpha values above 128 is translated to color of pixel.
 
 requirements:
 -------------

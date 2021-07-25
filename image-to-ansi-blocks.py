@@ -1,6 +1,6 @@
 #! /usr/bin/env python3
 
-# image to ascii pixelwise
+# image to ansi blocks
 # Copyright Lesmana Zimmer lesmana@gmx.de
 # Licensed under WTFPL version 2
 # http://www.wtfpl.net/about/
