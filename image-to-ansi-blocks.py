@@ -41,18 +41,20 @@ lowerhalfblock = '\u2584'
 fullblock = '\u2588'
 noblock = ' '
 
+alphathreshold = 128
+
 for upperrow, lowerrow in doublerows:
   for upperpixel, lowerpixel in zip(upperrow, lowerrow):
     #print(upperpixel, lowerpixel)
     ur, ug, ub, ua = upperpixel
     lr, lg, lb, la = lowerpixel
-    if ua < 128 and la < 128:
+    if ua < alphathreshold and la < alphathreshold:
       sys.stdout.write(noblock)
-    elif ua < 128 and la >= 128:
+    elif ua < alphathreshold and la >= alphathreshold:
       sys.stdout.write(f'\033[38;2;{lr};{lg};{lb}m' + lowerhalfblock + '\033[0m')
-    elif ua >= 128 and la < 128:
+    elif ua >= alphathreshold and la < alphathreshold:
       sys.stdout.write(f'\033[38;2;{ur};{ug};{ub}m' + upperhalfblock + '\033[0m')
-    elif ua >= 128 and la >= 128:
+    elif ua >= alphathreshold and la >= alphathreshold:
       sys.stdout.write(f'\033[38;2;{ur};{ug};{ub};48;2;{lr};{lg};{lb}m' + upperhalfblock + '\033[0m')
     else:
       raise Exception(f'unexpected alpha value: {ua}, {la}')
