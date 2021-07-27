@@ -46,21 +46,13 @@ for upperrow, lowerrow in doublerows:
     #print(upperpixel, lowerpixel)
     ur, ug, ub, ua = upperpixel
     lr, lg, lb, la = lowerpixel
-    if ua < 128:
-      ua = 0
-    if ua >= 128:
-      ua = 255
-    if la < 128:
-      la = 0
-    if la >= 128:
-      la = 255
-    if ua == 0 and la == 0:
+    if ua < 128 and la < 128:
       sys.stdout.write(noblock)
-    elif ua == 0 and la == 255:
+    elif ua < 128 and la >= 128:
       sys.stdout.write(f'\033[38;2;{lr};{lg};{lb}m' + lowerhalfblock + '\033[0m')
-    elif ua == 255 and la == 0:
+    elif ua >= 128 and la < 128:
       sys.stdout.write(f'\033[38;2;{ur};{ug};{ub}m' + upperhalfblock + '\033[0m')
-    elif ua == 255 and la == 255:
+    elif ua >= 128 and la >= 128:
       sys.stdout.write(f'\033[38;2;{ur};{ug};{ub};48;2;{lr};{lg};{lb}m' + upperhalfblock + '\033[0m')
     else:
       raise Exception(f'unexpected alpha value: {ua}, {la}')
