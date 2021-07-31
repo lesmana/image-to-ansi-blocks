@@ -11,11 +11,13 @@ import pprint
 
 from PIL import Image
 
-try:
-  filename = sys.argv[1]
-except:
-  print('need argument: filename of image')
-  sys.exit(1)
+def filenamefromargv():
+  try:
+    filename = sys.argv[1]
+  except:
+    print('need argument: filename of image')
+    sys.exit(1)
+  return filename
 
 def imagefiletopixels(filename):
   with Image.open(filename) as im:
@@ -71,6 +73,7 @@ def doublerowstoansiblocks(doublerows):
     yield '\n'
 
 def main():
+  filename = filenamefromargv()
   pixels, height, width = imagefiletopixels(filename)
   doublerows = pixelstodoublerows(pixels, height, width)
   for ansiblock in doublerowstoansiblocks(doublerows):
