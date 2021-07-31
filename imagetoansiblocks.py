@@ -50,7 +50,7 @@ noblock = ' '
 
 alphathreshold = 128
 
-def pixeltoansiblock(upperpixel, lowerpixel):
+def pixeltoansiblock(upperpixel, lowerpixel, alphathreshold):
   #print(upperpixel, lowerpixel)
   ur, ug, ub, ua = upperpixel
   lr, lg, lb, la = lowerpixel
@@ -65,10 +65,10 @@ def pixeltoansiblock(upperpixel, lowerpixel):
   else:
     raise Exception(f'unexpected alpha value: {ua}, {la}')
 
-def doublerowstoansiblocks(doublerows):
+def doublerowstoansiblocks(doublerows, alphathreshold):
   for upperrow, lowerrow in doublerows:
     for upperpixel, lowerpixel in zip(upperrow, lowerrow):
-      yield pixeltoansiblock(upperpixel, lowerpixel)
+      yield pixeltoansiblock(upperpixel, lowerpixel, alphathreshold)
     yield '\n'
 
 def main():
@@ -76,7 +76,7 @@ def main():
   pixels, height, width = imagefiletopixels(filename)
   rows = pixelstorows(pixels, height, width)
   doublerows = rowstodoublerows(rows)
-  for ansiblock in doublerowstoansiblocks(doublerows):
+  for ansiblock in doublerowstoansiblocks(doublerows, alphathreshold):
     sys.stdout.write(ansiblock)
 
 if __name__ == '__main__':
