@@ -72,5 +72,9 @@ def doublerowstoansiblocks(doublerows):
   for ansiblock in pixelstoansiblocks(doublerows):
     sys.stdout.write(ansiblock)
 
-doublerows = pixelstodoublerows(pixels)
-doublerowstoansiblocks(doublerows)
+def main():
+  doublerows = pixelstodoublerows(pixels)
+  doublerowstoansiblocks(doublerows)
+
+if __name__ == '__main__':
+  main()
