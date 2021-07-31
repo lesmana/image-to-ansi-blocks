@@ -39,5 +39,26 @@ class TestPixelToAnsiBlock(unittest.TestCase):
     ansiblock = t.pixeltoansiblock(upperpixel, lowerpixel, alphathreshold)
     self.assertEqual(ansiblock, '\033[38;2;101;102;103;48;2;201;202;203m\u2580\033[0m')
 
+  def test_alphathreshold0(self):
+    upperpixel = (101, 102, 103, 99)
+    lowerpixel = (201, 202, 203, 99)
+    alphathreshold = 100
+    ansiblock = t.pixeltoansiblock(upperpixel, lowerpixel, alphathreshold)
+    self.assertEqual(ansiblock, ' ')
+
+  def test_alphathreshold1(self):
+    upperpixel = (101, 102, 103, 99)
+    lowerpixel = (201, 202, 203, 100)
+    alphathreshold = 100
+    ansiblock = t.pixeltoansiblock(upperpixel, lowerpixel, alphathreshold)
+    self.assertEqual(ansiblock, '\033[38;2;201;202;203m\u2584\033[0m')
+
+  def test_alphathreshold2(self):
+    upperpixel = (101, 102, 103, 100)
+    lowerpixel = (201, 202, 203, 99)
+    alphathreshold = 100
+    ansiblock = t.pixeltoansiblock(upperpixel, lowerpixel, alphathreshold)
+    self.assertEqual(ansiblock, '\033[38;2;101;102;103m\u2580\033[0m')
+
 if __name__ == '__main__':
   unittest.main()
