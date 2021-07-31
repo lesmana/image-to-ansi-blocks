@@ -48,8 +48,6 @@ lowerhalfblock = '\u2584'
 fullblock = '\u2588'
 noblock = ' '
 
-alphathreshold = 128
-
 def pixeltoansiblock(upperpixel, lowerpixel, alphathreshold):
   #print(upperpixel, lowerpixel)
   ur, ug, ub, ua = upperpixel
@@ -73,6 +71,7 @@ def doublerowstoansiblocks(doublerows, alphathreshold):
 
 def main():
   filename = filenamefromargv()
+  alphathreshold = 128
   pixels, height, width = imagefiletopixels(filename)
   rows = pixelstorows(pixels, height, width)
   doublerows = rowstodoublerows(rows)
