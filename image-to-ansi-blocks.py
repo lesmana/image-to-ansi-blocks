@@ -48,20 +48,21 @@ def pixeltoansiblock(upperpixel, lowerpixel):
   ur, ug, ub, ua = upperpixel
   lr, lg, lb, la = lowerpixel
   if ua < alphathreshold and la < alphathreshold:
-    sys.stdout.write(noblock)
+    return noblock
   elif ua < alphathreshold and la >= alphathreshold:
-    sys.stdout.write(f'\033[38;2;{lr};{lg};{lb}m' + lowerhalfblock + '\033[0m')
+    return f'\033[38;2;{lr};{lg};{lb}m' + lowerhalfblock + '\033[0m'
   elif ua >= alphathreshold and la < alphathreshold:
-    sys.stdout.write(f'\033[38;2;{ur};{ug};{ub}m' + upperhalfblock + '\033[0m')
+    return f'\033[38;2;{ur};{ug};{ub}m' + upperhalfblock + '\033[0m'
   elif ua >= alphathreshold and la >= alphathreshold:
-    sys.stdout.write(f'\033[38;2;{ur};{ug};{ub};48;2;{lr};{lg};{lb}m' + upperhalfblock + '\033[0m')
+    return f'\033[38;2;{ur};{ug};{ub};48;2;{lr};{lg};{lb}m' + upperhalfblock + '\033[0m'
   else:
     raise Exception(f'unexpected alpha value: {ua}, {la}')
 
 def pixelstoansiblocks(doublerows):
   for upperrow, lowerrow in doublerows:
     for upperpixel, lowerpixel in zip(upperrow, lowerrow):
-      pixeltoansiblock(upperpixel, lowerpixel)
+      ansiblock = pixeltoansiblock(upperpixel, lowerpixel)
+      sys.stdout.write(ansiblock)
     sys.stdout.write('\n')
 
 pixelstoansiblocks(doublerows)
