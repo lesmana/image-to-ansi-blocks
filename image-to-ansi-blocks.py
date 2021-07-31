@@ -43,8 +43,7 @@ noblock = ' '
 
 alphathreshold = 128
 
-for upperrow, lowerrow in doublerows:
-  for upperpixel, lowerpixel in zip(upperrow, lowerrow):
+def pixeltoansiblock(upperpixel, lowerpixel):
     #print(upperpixel, lowerpixel)
     ur, ug, ub, ua = upperpixel
     lr, lg, lb, la = lowerpixel
@@ -58,4 +57,9 @@ for upperrow, lowerrow in doublerows:
       sys.stdout.write(f'\033[38;2;{ur};{ug};{ub};48;2;{lr};{lg};{lb}m' + upperhalfblock + '\033[0m')
     else:
       raise Exception(f'unexpected alpha value: {ua}, {la}')
+
+
+for upperrow, lowerrow in doublerows:
+  for upperpixel, lowerpixel in zip(upperrow, lowerrow):
+    pixeltoansiblock(upperpixel, lowerpixel)
   sys.stdout.write('\n')
