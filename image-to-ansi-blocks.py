@@ -58,8 +58,10 @@ def pixeltoansiblock(upperpixel, lowerpixel):
     else:
       raise Exception(f'unexpected alpha value: {ua}, {la}')
 
+def pixelstoansiblocks(doublerows):
+  for upperrow, lowerrow in doublerows:
+    for upperpixel, lowerpixel in zip(upperrow, lowerrow):
+      pixeltoansiblock(upperpixel, lowerpixel)
+    sys.stdout.write('\n')
 
-for upperrow, lowerrow in doublerows:
-  for upperpixel, lowerpixel in zip(upperrow, lowerrow):
-    pixeltoansiblock(upperpixel, lowerpixel)
-  sys.stdout.write('\n')
+pixelstoansiblocks(doublerows)
