@@ -62,7 +62,7 @@ def pixeltoansiblock(upperpixel, lowerpixel):
   else:
     raise Exception(f'unexpected alpha value: {ua}, {la}')
 
-def pixelstoansiblocks(doublerows):
+def doublerowstoansiblocks(doublerows):
   for upperrow, lowerrow in doublerows:
     for upperpixel, lowerpixel in zip(upperrow, lowerrow):
       yield pixeltoansiblock(upperpixel, lowerpixel)
@@ -70,7 +70,7 @@ def pixelstoansiblocks(doublerows):
 
 def main():
   doublerows = pixelstodoublerows(pixels)
-  for ansiblock in pixelstoansiblocks(doublerows):
+  for ansiblock in doublerowstoansiblocks(doublerows):
     sys.stdout.write(ansiblock)
 
 if __name__ == '__main__':
