@@ -27,7 +27,7 @@ def imagefiletopixels(filename):
     #print(im.getbands())
   return pixels, height, width
 
-def pixelstodoublerows(pixels, height, width):
+def pixelstorows(pixels, height, width):
 
   iterpixels = iter(pixels)
 
@@ -38,6 +38,10 @@ def pixelstodoublerows(pixels, height, width):
       pixel = next(iterpixels)
       row.append(pixel)
     rows.append(row)
+
+  return rows
+
+def rowstodoublerows(rows):
 
   pairs = [iter(rows)] * 2
   doublerows = itertools.zip_longest(*pairs)
@@ -75,7 +79,8 @@ def doublerowstoansiblocks(doublerows):
 def main():
   filename = filenamefromargv()
   pixels, height, width = imagefiletopixels(filename)
-  doublerows = pixelstodoublerows(pixels, height, width)
+  rows = pixelstorows(pixels, height, width)
+  doublerows = rowstodoublerows(rows)
   for ansiblock in doublerowstoansiblocks(doublerows):
     sys.stdout.write(ansiblock)
 
