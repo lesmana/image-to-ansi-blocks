@@ -28,9 +28,7 @@ def imagefiletopixels(filename):
   return pixels, height, width
 
 def pixelstorows(pixels, height, width):
-
   iterpixels = iter(pixels)
-
   rows = []
   for y in range(height):
     row = []
@@ -38,14 +36,11 @@ def pixelstorows(pixels, height, width):
       pixel = next(iterpixels)
       row.append(pixel)
     rows.append(row)
-
   return rows
 
 def rowstodoublerows(rows):
-
   pairs = [iter(rows)] * 2
   doublerows = itertools.zip_longest(*pairs)
-
   return doublerows
 
 upperhalfblock = '\u2580'
