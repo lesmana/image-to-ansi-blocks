@@ -68,13 +68,10 @@ def pixelstoansiblocks(doublerows):
       yield pixeltoansiblock(upperpixel, lowerpixel)
     yield '\n'
 
-def doublerowstoansiblocks(doublerows):
-  for ansiblock in pixelstoansiblocks(doublerows):
-    sys.stdout.write(ansiblock)
-
 def main():
   doublerows = pixelstodoublerows(pixels)
-  doublerowstoansiblocks(doublerows)
+  for ansiblock in pixelstoansiblocks(doublerows):
+    sys.stdout.write(ansiblock)
 
 if __name__ == '__main__':
   main()
