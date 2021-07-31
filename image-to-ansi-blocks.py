@@ -61,8 +61,8 @@ def pixeltoansiblock(upperpixel, lowerpixel):
 def pixelstoansiblocks(doublerows):
   for upperrow, lowerrow in doublerows:
     for upperpixel, lowerpixel in zip(upperrow, lowerrow):
-      ansiblock = pixeltoansiblock(upperpixel, lowerpixel)
-      sys.stdout.write(ansiblock)
-    sys.stdout.write('\n')
+      yield pixeltoansiblock(upperpixel, lowerpixel)
+    yield '\n'
 
-pixelstoansiblocks(doublerows)
+for ansiblock in pixelstoansiblocks(doublerows):
+  sys.stdout.write(ansiblock)
