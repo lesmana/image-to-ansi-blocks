@@ -23,18 +23,22 @@ with Image.open(filename) as im:
   height = im.height
   #print(im.getbands())
 
-iterpixels = iter(pixels)
+def pixelstodoublerows(pixels):
 
-rows = []
-for y in range(height):
-  row = []
-  for x in range(width):
-    pixel = next(iterpixels)
-    row.append(pixel)
-  rows.append(row)
+  iterpixels = iter(pixels)
 
-pairs = [iter(rows)] * 2
-doublerows = itertools.zip_longest(*pairs)
+  rows = []
+  for y in range(height):
+    row = []
+    for x in range(width):
+      pixel = next(iterpixels)
+      row.append(pixel)
+    rows.append(row)
+
+  pairs = [iter(rows)] * 2
+  doublerows = itertools.zip_longest(*pairs)
+
+  return doublerows
 
 upperhalfblock = '\u2580'
 lowerhalfblock = '\u2584'
@@ -68,4 +72,5 @@ def doublerowstoansiblocks(doublerows):
   for ansiblock in pixelstoansiblocks(doublerows):
     sys.stdout.write(ansiblock)
 
+doublerows = pixelstodoublerows(pixels)
 doublerowstoansiblocks(doublerows)
