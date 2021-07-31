@@ -17,13 +17,15 @@ except:
   print('need argument: filename of image')
   sys.exit(1)
 
-with Image.open(filename) as im:
-  pixels = im.getdata()
-  width = im.width
-  height = im.height
-  #print(im.getbands())
+def imagefiletopixels(filename):
+  with Image.open(filename) as im:
+    pixels = im.getdata()
+    width = im.width
+    height = im.height
+    #print(im.getbands())
+  return pixels, height, width
 
-def pixelstodoublerows(pixels):
+def pixelstodoublerows(pixels, height, width):
 
   iterpixels = iter(pixels)
 
@@ -69,7 +71,8 @@ def doublerowstoansiblocks(doublerows):
     yield '\n'
 
 def main():
-  doublerows = pixelstodoublerows(pixels)
+  pixels, height, width = imagefiletopixels(filename)
+  doublerows = pixelstodoublerows(pixels, height, width)
   for ansiblock in doublerowstoansiblocks(doublerows):
     sys.stdout.write(ansiblock)
 
