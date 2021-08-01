@@ -4,6 +4,6 @@ alpha threshold as command line argument
 
 optional alpha to certain color
 
-handle uneven height with padding row at top or bottom
+optional padding row for uneven height at top
 
 optional border around image?
