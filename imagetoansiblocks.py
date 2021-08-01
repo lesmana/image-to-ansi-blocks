@@ -38,14 +38,15 @@ def pixelstorows(pixels, height, width):
     rows.append(row)
   return rows
 
-def rowstodoublerows(rows):
+def rowstodoublerows(rows, fillvalue):
   iterrows = iter(rows)
-  doublerows = itertools.zip_longest(iterrows, iterrows)
+  doublerows = itertools.zip_longest(iterrows, iterrows, fillvalue=fillvalue)
   return doublerows
 
-def pixelstodoublerows(pixels, height, width):
+def pixelstodoublerows(pixels, height, width, fillvalue):
   rows = pixelstorows(pixels, height, width)
-  doublerows = rowstodoublerows(rows)
+  fillvalue = [fillvalue] * width
+  doublerows = rowstodoublerows(rows, fillvalue)
   return doublerows
 
 upperhalfblock = '\u2580'
@@ -77,8 +78,9 @@ def doublerowstoansiblocks(doublerows, alphathreshold):
 def main():
   filename = filenamefromargv()
   alphathreshold = 128
+  fillvalue = (0, 0, 0, 0)
   pixels, height, width = imagefiletopixels(filename)
-  doublerows = pixelstodoublerows(pixels, height, width)
+  doublerows = pixelstodoublerows(pixels, height, width, fillvalue)
   for ansiblock in doublerowstoansiblocks(doublerows, alphathreshold):
     sys.stdout.write(ansiblock)
 

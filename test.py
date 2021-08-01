@@ -66,8 +66,17 @@ class TestPixelsToDoubleRows(unittest.TestCase):
     pixels = [1,2,3,4,5,6,7,8,9,10,11,12]
     height = 4
     width = 3
-    doublerows = t.pixelstodoublerows(pixels, height, width)
+    fillvalue = 0
+    doublerows = t.pixelstodoublerows(pixels, height, width, fillvalue)
     self.assertEqual(list(doublerows), [([1,2,3],[4,5,6]),([7,8,9],[10,11,12])])
+
+  def test_3x3(self):
+    pixels = [1,2,3,4,5,6,7,8,9]
+    height = 3
+    width = 3
+    fillvalue = 0
+    doublerows = t.pixelstodoublerows(pixels, height, width, fillvalue)
+    self.assertEqual(list(doublerows), [([1,2,3],[4,5,6]),([7,8,9],[0,0,0])])
 
 if __name__ == '__main__':
   unittest.main()
