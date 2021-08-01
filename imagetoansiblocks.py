@@ -43,6 +43,11 @@ def rowstodoublerows(rows):
   doublerows = itertools.zip_longest(iterrows, iterrows)
   return doublerows
 
+def pixelstodoublerows(pixels, height, width):
+  rows = pixelstorows(pixels, height, width)
+  doublerows = rowstodoublerows(rows)
+  return doublerows
+
 upperhalfblock = '\u2580'
 lowerhalfblock = '\u2584'
 fullblock = '\u2588'
@@ -73,8 +78,7 @@ def main():
   filename = filenamefromargv()
   alphathreshold = 128
   pixels, height, width = imagefiletopixels(filename)
-  rows = pixelstorows(pixels, height, width)
-  doublerows = rowstodoublerows(rows)
+  doublerows = pixelstodoublerows(pixels, height, width)
   for ansiblock in doublerowstoansiblocks(doublerows, alphathreshold):
     sys.stdout.write(ansiblock)
 
