@@ -60,5 +60,14 @@ class TestPixelToAnsiBlock(unittest.TestCase):
     ansiblock = t.pixeltoansiblock(upperpixel, lowerpixel, alphathreshold)
     self.assertEqual(ansiblock, '\033[38;2;101;102;103m\u2580\033[0m')
 
+class TestPixelsToDoubleRows(unittest.TestCase):
+
+  def test_4x3(self):
+    pixels = [1,2,3,4,5,6,7,8,9,10,11,12]
+    height = 4
+    width = 3
+    doublerows = t.pixelstodoublerows(pixels, height, width)
+    self.assertEqual(list(doublerows), [([1,2,3],[4,5,6]),([7,8,9],[10,11,12])])
+
 if __name__ == '__main__':
   unittest.main()
