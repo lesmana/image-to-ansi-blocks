@@ -43,9 +43,9 @@ def rowstodoublerows(rows, fillvalue):
   doublerows = itertools.zip_longest(iterrows, iterrows, fillvalue=fillvalue)
   return doublerows
 
-def pixelstodoublerows(pixels, height, width, fillvalue):
+def pixelstodoublerows(pixels, height, width, unevenheightpadding):
   rows = pixelstorows(pixels, height, width)
-  fillvalue = [fillvalue] * width
+  fillvalue = [unevenheightpadding] * width
   doublerows = rowstodoublerows(rows, fillvalue)
   return doublerows
 
@@ -78,9 +78,9 @@ def doublerowstoansiblocks(doublerows, alphathreshold):
 def main():
   filename = filenamefromargv()
   alphathreshold = 128
-  fillvalue = (0, 0, 0, 0)
+  unevenheightpadding = (0, 0, 0, 0)
   pixels, height, width = imagefiletopixels(filename)
-  doublerows = pixelstodoublerows(pixels, height, width, fillvalue)
+  doublerows = pixelstodoublerows(pixels, height, width, unevenheightpadding)
   for ansiblock in doublerowstoansiblocks(doublerows, alphathreshold):
     sys.stdout.write(ansiblock)
 
