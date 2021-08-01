@@ -39,8 +39,8 @@ def pixelstorows(pixels, height, width):
   return rows
 
 def rowstodoublerows(rows):
-  pairs = [iter(rows)] * 2
-  doublerows = itertools.zip_longest(*pairs)
+  iterrows = iter(rows)
+  doublerows = itertools.zip_longest(iterrows, iterrows)
   return doublerows
 
 upperhalfblock = '\u2580'
