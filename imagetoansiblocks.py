@@ -2,8 +2,8 @@
 
 # image to ansi blocks
 # Copyright Lesmana Zimmer lesmana@gmx.de
-# Licensed under WTFPL version 2
-# http://www.wtfpl.net/about/
+# Licensed under GNU GPL version 3 or later
+# https://www.gnu.org/licenses/gpl-3.0.html
 
 import sys
 import itertools
