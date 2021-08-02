@@ -8,16 +8,15 @@
 import sys
 import itertools
 import pprint
+import argparse
 
 from PIL import Image
 
 def filenamefromargv():
-  try:
-    filename = sys.argv[1]
-  except:
-    print('need argument: filename of image')
-    sys.exit(1)
-  return filename
+  parser = argparse.ArgumentParser()
+  parser.add_argument('filename')
+  args = parser.parse_args()
+  return args.filename
 
 def imagefiletopixels(filename):
   with Image.open(filename) as im:
