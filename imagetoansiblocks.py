@@ -26,6 +26,14 @@ def imagefiletopixels(filename):
     #print(im.getbands())
   return pixels, height, width
 
+def toevenheight(pixels, height, width, unevenheightpadding):
+  if height % 2 != 0:
+    fillvalue = [unevenheightpadding] * width
+    pixels.extend(fillvalue)
+    return pixels, height+1, width
+  else:
+    return pixels, height, width
+
 def pixelstorows(pixels, height, width):
   iterpixels = iter(pixels)
   rows = []
@@ -37,15 +45,14 @@ def pixelstorows(pixels, height, width):
     rows.append(row)
   return rows
 
-def rowstodoublerows(rows, fillvalue):
+def rowstodoublerows(rows):
   iterrows = iter(rows)
-  doublerows = itertools.zip_longest(iterrows, iterrows, fillvalue=fillvalue)
+  doublerows = itertools.zip_longest(iterrows, iterrows)
   return doublerows
 
-def pixelstodoublerows(pixels, height, width, unevenheightpadding):
+def pixelstodoublerows(pixels, height, width):
   rows = pixelstorows(pixels, height, width)
-  fillvalue = [unevenheightpadding] * width
-  doublerows = rowstodoublerows(rows, fillvalue)
+  doublerows = rowstodoublerows(rows)
   return doublerows
 
 upperhalfblock = '\u2580'
@@ -79,7 +86,8 @@ def main():
   alphathreshold = 128
   unevenheightpadding = (0, 0, 0, 0)
   pixels, height, width = imagefiletopixels(filename)
-  doublerows = pixelstodoublerows(pixels, height, width, unevenheightpadding)
+  pixels, height, width = toevenheight(pixels, height, width, unevenheightpadding)
+  doublerows = pixelstodoublerows(pixels, height, width)
   for ansiblock in doublerowstoansiblocks(doublerows, alphathreshold):
     sys.stdout.write(ansiblock)
 

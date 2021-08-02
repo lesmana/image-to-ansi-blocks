@@ -60,23 +60,27 @@ class TestPixelToAnsiBlock(unittest.TestCase):
     ansiblock = t.pixeltoansiblock(upperpixel, lowerpixel, alphathreshold)
     self.assertEqual(ansiblock, '\033[38;2;11;22;33m\u2580\033[0m')
 
-class TestPixelsToDoubleRows(unittest.TestCase):
+class TestToEvenHeight(unittest.TestCase):
 
   def test_4x3(self):
     pixels = [1,2,3,4,5,6,7,8,9,10,11,12]
     height = 4
     width = 3
     unevenheightpadding = 0
-    doublerows = t.pixelstodoublerows(pixels, height, width, unevenheightpadding)
-    self.assertEqual(list(doublerows), [([1,2,3],[4,5,6]),([7,8,9],[10,11,12])])
+    opixels, oheight, owidth = t.toevenheight(pixels, height, width, unevenheightpadding)
+    self.assertEqual(oheight, 4)
+    self.assertEqual(owidth, 3)
+    self.assertEqual(opixels, [1,2,3,4,5,6,7,8,9,10,11,12])
 
   def test_3x3(self):
     pixels = [1,2,3,4,5,6,7,8,9]
     height = 3
     width = 3
     unevenheightpadding = 0
-    doublerows = t.pixelstodoublerows(pixels, height, width, unevenheightpadding)
-    self.assertEqual(list(doublerows), [([1,2,3],[4,5,6]),([7,8,9],[0,0,0])])
+    opixels, oheight, owidth = t.toevenheight(pixels, height, width, unevenheightpadding)
+    self.assertEqual(oheight, 4)
+    self.assertEqual(owidth, 3)
+    self.assertEqual(opixels, [1,2,3,4,5,6,7,8,9,0,0,0])
 
 if __name__ == '__main__':
   unittest.main()
