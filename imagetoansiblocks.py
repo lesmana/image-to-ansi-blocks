@@ -15,8 +15,9 @@ from PIL import Image
 def filenamefromargv():
   parser = argparse.ArgumentParser()
   parser.add_argument('filename')
+  parser.add_argument('--alphathreshold', type=int, default=128)
   args = parser.parse_args()
-  return args.filename
+  return args
 
 def imagefiletopixels(filename):
   with Image.open(filename) as im:
@@ -82,13 +83,12 @@ def doublerowstoansiblocks(doublerows, alphathreshold):
     yield '\n'
 
 def main():
-  filename = filenamefromargv()
-  alphathreshold = 128
+  args = filenamefromargv()
   unevenheightpadding = (0, 0, 0, 0)
-  pixels, height, width = imagefiletopixels(filename)
+  pixels, height, width = imagefiletopixels(args.filename)
   pixels, height, width = toevenheight(pixels, height, width, unevenheightpadding)
   doublerows = pixelstodoublerows(pixels, height, width)
-  for ansiblock in doublerowstoansiblocks(doublerows, alphathreshold):
+  for ansiblock in doublerowstoansiblocks(doublerows, args.alphathreshold):
     sys.stdout.write(ansiblock)
 
 if __name__ == '__main__':
