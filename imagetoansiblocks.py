@@ -17,12 +17,23 @@ def filenamefromargv():
   parser.add_argument('filename')
   parser.add_argument('--alphathreshold', type=int, default=128)
   parser.add_argument('--paddingattop', action='store_const', const=1, default=0)
+  parser.add_argument('--background', type=int, nargs=3)
   args = parser.parse_args()
+  if args.background is not None:
+    args.background = tuple(args.background)
   return args
 
 def openimage(filename):
   with Image.open(filename) as im:
     im.load()
+    return im
+
+def background(im, background):
+  if background is not None:
+    bm = Image.new('RGBA', im.size, background)
+    bm.alpha_composite(im)
+    return bm
+  else:
     return im
 
 def toevenheight(im, paddingheightoffset):
@@ -84,6 +95,7 @@ def main():
   args = filenamefromargv()
   unevenheightpadding = (0, 0, 0, 0)
   im = openimage(args.filename)
+  im = background(im, args.background)
   im = toevenheight(im, args.paddingattop)
   pixels = list(im.getdata())
   width = im.width

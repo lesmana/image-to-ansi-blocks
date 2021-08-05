@@ -62,6 +62,26 @@ class TestPixelToAnsiBlock(unittest.TestCase):
     ansiblock = t.pixeltoansiblock(upperpixel, lowerpixel, alphathreshold)
     self.assertEqual(ansiblock, '\033[38;2;11;22;33m\u2580\033[0m')
 
+class TestBackground(unittest.TestCase):
+
+  def test_noalpha(self):
+    im = Image.new('RGBA', (1,1), (22,22,22,255))
+    background = (0,0,0)
+    bm = t.background(im, background)
+    self.assertEqual(bm.height, 1)
+    self.assertEqual(bm.width, 1)
+    self.assertEqual(list(bm.getdata()), [(22,22,22,255)])
+
+  def test_withalpha(self):
+    im = Image.new('RGBA', (3,1))
+    im.putdata([(22,22,22,0), (22,22,22,128), (22,22,22,255)])
+    background = (0,0,0)
+    bm = t.background(im, background)
+    self.assertEqual(bm.height, 1)
+    self.assertEqual(bm.width, 3)
+    self.assertEqual(list(bm.getdata()), [(0,0,0,255), (11,11,11,255), (22,22,22,255)])
+
+
 class TestToEvenHeight(unittest.TestCase):
 
   def test_unevenheight(self):
