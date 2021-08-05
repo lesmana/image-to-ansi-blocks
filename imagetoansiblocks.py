@@ -24,14 +24,17 @@ def openimage(filename):
     return im
 
 def toevenheight(im, unevenheightpadding):
-  pixels = list(im.getdata())
-  width = im.width
-  height = im.height
-  if height % 2 != 0:
-    fillvalue = [unevenheightpadding] * width
-    pixels.extend(fillvalue)
-    return pixels, height+1, width
+  if im.height % 2 != 0:
+    pm = Image.new('RGBA', (im.width, im.height+1), unevenheightpadding)
+    pm.paste(im)
+    pixels = list(pm.getdata())
+    width = pm.width
+    height = pm.height
+    return pixels, height, width
   else:
+    pixels = list(im.getdata())
+    width = im.width
+    height = im.height
     return pixels, height, width
 
 def pixelstorows(pixels, height, width):
