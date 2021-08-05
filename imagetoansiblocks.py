@@ -44,7 +44,7 @@ def toevenheight(im, paddingheightoffset):
   else:
     return im
 
-def pixelstorows(pixels, height, width):
+def pixelstorows(pixels, width, height):
   iterpixels = iter(pixels)
   rows = []
   for y in range(height):
@@ -60,8 +60,8 @@ def rowstodoublerows(rows):
   doublerows = itertools.zip_longest(iterrows, iterrows)
   return doublerows
 
-def pixelstodoublerows(pixels, height, width):
-  rows = pixelstorows(pixels, height, width)
+def pixelstodoublerows(pixels, width, height):
+  rows = pixelstorows(pixels, width, height)
   doublerows = rowstodoublerows(rows)
   return doublerows
 
@@ -100,7 +100,7 @@ def main():
   pixels = list(im.getdata())
   width = im.width
   height = im.height
-  doublerows = pixelstodoublerows(pixels, height, width)
+  doublerows = pixelstodoublerows(pixels, width, height)
   for ansiblock in doublerowstoansiblocks(doublerows, args.alphathreshold):
     sys.stdout.write(ansiblock)
 

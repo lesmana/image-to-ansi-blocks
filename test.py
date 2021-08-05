@@ -68,8 +68,8 @@ class TestBackground(unittest.TestCase):
     im = Image.new('RGBA', (1,1), (22,22,22,255))
     background = (0,0,0)
     bm = t.background(im, background)
-    self.assertEqual(bm.height, 1)
     self.assertEqual(bm.width, 1)
+    self.assertEqual(bm.height, 1)
     self.assertEqual(list(bm.getdata()), [(22,22,22,255)])
 
   def test_withalpha(self):
@@ -77,8 +77,8 @@ class TestBackground(unittest.TestCase):
     im.putdata([(22,22,22,0), (22,22,22,128), (22,22,22,255)])
     background = (0,0,0)
     bm = t.background(im, background)
-    self.assertEqual(bm.height, 1)
     self.assertEqual(bm.width, 3)
+    self.assertEqual(bm.height, 1)
     self.assertEqual(list(bm.getdata()), [(0,0,0,255), (11,11,11,255), (22,22,22,255)])
 
 
@@ -88,24 +88,24 @@ class TestToEvenHeight(unittest.TestCase):
     im = Image.new('RGBA', (1,1), (11,11,11,255))
     paddingheightoffset = 0
     pm = t.toevenheight(im, paddingheightoffset)
-    self.assertEqual(pm.height, 2)
     self.assertEqual(pm.width, 1)
+    self.assertEqual(pm.height, 2)
     self.assertEqual(list(pm.getdata()), [(11,11,11,255), (0,0,0,0)])
 
   def test_evenheight(self):
     im = Image.new('RGBA', (1,2), (11,11,11,255))
     paddingheightoffset = 0
     pm = t.toevenheight(im, paddingheightoffset)
-    self.assertEqual(pm.height, 2)
     self.assertEqual(pm.width, 1)
+    self.assertEqual(pm.height, 2)
     self.assertEqual(list(pm.getdata()), [(11,11,11,255), (11,11,11,255)])
 
   def test_paddingheightoffset(self):
     im = Image.new('RGBA', (1,1), (11,11,11,255))
     paddingheightoffset = 1
     pm = t.toevenheight(im, paddingheightoffset)
-    self.assertEqual(pm.height, 2)
     self.assertEqual(pm.width, 1)
+    self.assertEqual(pm.height, 2)
     self.assertEqual(list(pm.getdata()), [(0,0,0,0), (11,11,11,255)])
 
 if __name__ == '__main__':
