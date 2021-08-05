@@ -19,7 +19,7 @@ def filenamefromargv():
   args = parser.parse_args()
   return args
 
-def imagefiletopixels(filename):
+def openimage(filename):
   with Image.open(filename) as im:
     return im
 
@@ -84,7 +84,7 @@ def doublerowstoansiblocks(doublerows, alphathreshold):
 def main():
   args = filenamefromargv()
   unevenheightpadding = (0, 0, 0, 0)
-  im = imagefiletopixels(args.filename)
+  im = openimage(args.filename)
   pixels, height, width = toevenheight(im, unevenheightpadding)
   doublerows = pixelstodoublerows(pixels, height, width)
   for ansiblock in doublerowstoansiblocks(doublerows, args.alphathreshold):
