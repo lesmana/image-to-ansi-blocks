@@ -23,9 +23,9 @@ def openimage(filename):
   with Image.open(filename) as im:
     return im
 
-def toevenheight(im, unevenheightpadding):
+def toevenheight(im):
   if im.height % 2 != 0:
-    pm = Image.new('RGBA', (im.width, im.height+1), unevenheightpadding)
+    pm = Image.new('RGBA', (im.width, im.height+1), (0,0,0,0))
     pm.paste(im)
     return pm
   else:
@@ -82,7 +82,7 @@ def main():
   args = filenamefromargv()
   unevenheightpadding = (0, 0, 0, 0)
   im = openimage(args.filename)
-  im = toevenheight(im, unevenheightpadding)
+  im = toevenheight(im)
   pixels = list(im.getdata())
   width = im.width
   height = im.height

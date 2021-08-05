@@ -66,16 +66,14 @@ class TestToEvenHeight(unittest.TestCase):
 
   def test_unevenheight(self):
     im = Image.new('RGBA', (1,1), (11,11,11,255))
-    unevenheightpadding = (0,0,0,0)
-    pm = t.toevenheight(im, unevenheightpadding)
+    pm = t.toevenheight(im)
     self.assertEqual(pm.height, 2)
     self.assertEqual(pm.width, 1)
     self.assertEqual(list(pm.getdata()), [(11,11,11,255), (0,0,0,0)])
 
   def test_evenheight(self):
     im = Image.new('RGBA', (1,2), (11,11,11,255))
-    unevenheightpadding = (0,0,0,0)
-    pm = t.toevenheight(im, unevenheightpadding)
+    pm = t.toevenheight(im)
     self.assertEqual(pm.height, 2)
     self.assertEqual(pm.width, 1)
     self.assertEqual(list(pm.getdata()), [(11,11,11,255), (11,11,11,255)])
