@@ -21,13 +21,12 @@ def filenamefromargv():
 
 def imagefiletopixels(filename):
   with Image.open(filename) as im:
-    pixels = im.getdata()
-    width = im.width
-    height = im.height
-    #print(im.getbands())
-  return pixels, height, width
+    return im
 
-def toevenheight(pixels, height, width, unevenheightpadding):
+def toevenheight(im, unevenheightpadding):
+  pixels = list(im.getdata())
+  width = im.width
+  height = im.height
   if height % 2 != 0:
     fillvalue = [unevenheightpadding] * width
     pixels.extend(fillvalue)
@@ -85,8 +84,8 @@ def doublerowstoansiblocks(doublerows, alphathreshold):
 def main():
   args = filenamefromargv()
   unevenheightpadding = (0, 0, 0, 0)
-  pixels, height, width = imagefiletopixels(args.filename)
-  pixels, height, width = toevenheight(pixels, height, width, unevenheightpadding)
+  im = imagefiletopixels(args.filename)
+  pixels, height, width = toevenheight(im, unevenheightpadding)
   doublerows = pixelstodoublerows(pixels, height, width)
   for ansiblock in doublerowstoansiblocks(doublerows, args.alphathreshold):
     sys.stdout.write(ansiblock)

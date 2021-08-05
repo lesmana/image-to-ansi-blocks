@@ -9,6 +9,8 @@ import unittest
 
 import imagetoansiblocks as t
 
+from PIL import Image
+
 class TestPixelToAnsiBlock(unittest.TestCase):
 
   def test_bothalpha(self):
@@ -62,25 +64,21 @@ class TestPixelToAnsiBlock(unittest.TestCase):
 
 class TestToEvenHeight(unittest.TestCase):
 
-  def test_4x3(self):
-    pixels = [1,2,3,4,5,6,7,8,9,10,11,12]
-    height = 4
-    width = 3
-    unevenheightpadding = 0
-    opixels, oheight, owidth = t.toevenheight(pixels, height, width, unevenheightpadding)
-    self.assertEqual(oheight, 4)
-    self.assertEqual(owidth, 3)
-    self.assertEqual(opixels, [1,2,3,4,5,6,7,8,9,10,11,12])
+  def test_unevenheight(self):
+    im = Image.new('RGBA', (1,1), (11,11,11,255))
+    unevenheightpadding = (0,0,0,0)
+    pixels, height, width = t.toevenheight(im, unevenheightpadding)
+    self.assertEqual(height, 2)
+    self.assertEqual(width, 1)
+    self.assertEqual(pixels, [(11,11,11,255), (0,0,0,0)])
 
-  def test_3x3(self):
-    pixels = [1,2,3,4,5,6,7,8,9]
-    height = 3
-    width = 3
-    unevenheightpadding = 0
-    opixels, oheight, owidth = t.toevenheight(pixels, height, width, unevenheightpadding)
-    self.assertEqual(oheight, 4)
-    self.assertEqual(owidth, 3)
-    self.assertEqual(opixels, [1,2,3,4,5,6,7,8,9,0,0,0])
+  def test_evenheight(self):
+    im = Image.new('RGBA', (1,2), (11,11,11,255))
+    unevenheightpadding = (0,0,0,0)
+    pixels, height, width = t.toevenheight(im, unevenheightpadding)
+    self.assertEqual(height, 2)
+    self.assertEqual(width, 1)
+    self.assertEqual(pixels, [(11,11,11,255), (11,11,11,255)])
 
 if __name__ == '__main__':
   unittest.main()
