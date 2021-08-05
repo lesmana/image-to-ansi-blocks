@@ -20,8 +20,12 @@ see here for list of terminal supporting rgb:
 https://gist.github.com/XVilka/8346728
 
 terminal has no transparency.
-for now alpha value below 128 is translated to terminal background color.
+alpha value below 128 is translated to terminal background color.
 alpha values above 128 is translated to color of pixel.
+
+this can be customized using --alphathreshold
+
+or use --background r g b to flatten alpha values
 
 requirements:
 -------------
