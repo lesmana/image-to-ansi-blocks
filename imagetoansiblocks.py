@@ -27,15 +27,9 @@ def toevenheight(im, unevenheightpadding):
   if im.height % 2 != 0:
     pm = Image.new('RGBA', (im.width, im.height+1), unevenheightpadding)
     pm.paste(im)
-    pixels = list(pm.getdata())
-    width = pm.width
-    height = pm.height
-    return pixels, height, width
+    return pm
   else:
-    pixels = list(im.getdata())
-    width = im.width
-    height = im.height
-    return pixels, height, width
+    return im
 
 def pixelstorows(pixels, height, width):
   iterpixels = iter(pixels)
@@ -88,7 +82,10 @@ def main():
   args = filenamefromargv()
   unevenheightpadding = (0, 0, 0, 0)
   im = openimage(args.filename)
-  pixels, height, width = toevenheight(im, unevenheightpadding)
+  im = toevenheight(im, unevenheightpadding)
+  pixels = list(im.getdata())
+  width = im.width
+  height = im.height
   doublerows = pixelstodoublerows(pixels, height, width)
   for ansiblock in doublerowstoansiblocks(doublerows, args.alphathreshold):
     sys.stdout.write(ansiblock)
