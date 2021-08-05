@@ -16,6 +16,7 @@ def filenamefromargv():
   parser = argparse.ArgumentParser()
   parser.add_argument('filename')
   parser.add_argument('--alphathreshold', type=int, default=128)
+  parser.add_argument('--paddingattop', action='store_const', const=1, default=0)
   args = parser.parse_args()
   return args
 
@@ -24,10 +25,10 @@ def openimage(filename):
     im.load()
     return im
 
-def toevenheight(im):
+def toevenheight(im, paddingheightoffset):
   if im.height % 2 != 0:
     pm = Image.new('RGBA', (im.width, im.height+1), (0,0,0,0))
-    pm.paste(im)
+    pm.paste(im, (0, paddingheightoffset))
     return pm
   else:
     return im
@@ -83,7 +84,7 @@ def main():
   args = filenamefromargv()
   unevenheightpadding = (0, 0, 0, 0)
   im = openimage(args.filename)
-  im = toevenheight(im)
+  im = toevenheight(im, args.paddingattop)
   pixels = list(im.getdata())
   width = im.width
   height = im.height
