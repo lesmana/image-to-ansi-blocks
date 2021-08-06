@@ -26,6 +26,7 @@ def filenamefromargv():
 def openimage(filename):
   with Image.open(filename) as im:
     im.load()
+    im = im.convert('RGBA')
     return im
 
 def background(im, background):
