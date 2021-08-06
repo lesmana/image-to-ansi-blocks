@@ -12,7 +12,7 @@ import argparse
 
 from PIL import Image
 
-def filenamefromargv():
+def parseargv():
   parser = argparse.ArgumentParser()
   parser.add_argument('filename')
   parser.add_argument('--alphathreshold', type=int, default=128)
@@ -93,7 +93,7 @@ def doublerowstoansiblocks(doublerows, alphathreshold):
     yield '\n'
 
 def main():
-  args = filenamefromargv()
+  args = parseargv()
   im = openimage(args.filename)
   im = background(im, args.background)
   im = toevenheight(im, args.paddingattop)
