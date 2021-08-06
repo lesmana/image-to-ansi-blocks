@@ -93,7 +93,6 @@ def doublerowstoansiblocks(doublerows, alphathreshold):
 
 def main():
   args = filenamefromargv()
-  unevenheightpadding = (0, 0, 0, 0)
   im = openimage(args.filename)
   im = background(im, args.background)
   im = toevenheight(im, args.paddingattop)
