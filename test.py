@@ -65,7 +65,8 @@ class TestPixelToAnsiBlock(unittest.TestCase):
 class TestBackground(unittest.TestCase):
 
   def test_noalpha(self):
-    im = Image.new('RGBA', (1,1), (22,22,22,255))
+    im = Image.new('RGBA', (1,1))
+    im.putdata([(22,22,22,255)])
     background = (0,0,0)
     bm = t.background(im, background)
     self.assertEqual(bm.width, 1)
