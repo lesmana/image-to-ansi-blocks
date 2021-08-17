@@ -16,7 +16,7 @@ def parseargv():
   parser = argparse.ArgumentParser()
   parser.add_argument('filename')
   parser.add_argument('--alphathreshold', type=int, default=128)
-  parser.add_argument('--paddingattop', action='store_const', const=1, default=0)
+  parser.add_argument('--paddingattop', action='store_const', dest='paddingheightoffset', const=1, default=0)
   parser.add_argument('--background', type=int, nargs=3)
   args = parser.parse_args()
   if args.background is not None:
@@ -96,7 +96,7 @@ def main():
   args = parseargv()
   im = openimage(args.filename)
   im = background(im, args.background)
-  im = toevenheight(im, args.paddingattop)
+  im = toevenheight(im, args.paddingheightoffset)
   pixels = list(im.getdata())
   width = im.width
   height = im.height
