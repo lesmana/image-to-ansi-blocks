@@ -12,6 +12,8 @@ using foreground and background color
 
 effectively two pixels in one ascii char
 
+for examples see examples directory
+
 limitations:
 ------------
 
@@ -33,17 +35,6 @@ requirements:
 python3
 
 PIL/Pillow
-
-examples:
----------
-
-cat image from https://www.favicon.cc/?action=icon&file_id=851700
-
-mario https://www.favicon.cc/?action=icon&file_id=962351
-
-heart https://www.favicon.cc/?action=icon&file_id=951526
-
-dog https://www.spriters-resource.com/pc_computer/undertale/sheet/76649/
 
 license:
 --------
