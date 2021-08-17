@@ -102,7 +102,7 @@ class TestToEvenHeight(unittest.TestCase):
     self.assertEqual(pm.height, 2)
     self.assertEqual(list(pm.getdata()), [(11,11,11,255), (11,11,11,255)])
 
-  def test_paddingheightoffset(self):
+  def test_paddingattop(self):
     im = Image.new('RGBA', (1,1))
     im.putdata([(11,11,11,255)])
     paddingheightoffset = 1
