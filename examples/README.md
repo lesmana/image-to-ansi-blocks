@@ -1,3 +1,6 @@
+examples for image to ansi blocks
+---------------------------------
+
 cat image from https://www.favicon.cc/?action=icon&file_id=851700
 
 mario https://www.favicon.cc/?action=icon&file_id=962351
