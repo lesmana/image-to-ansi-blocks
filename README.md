@@ -4,6 +4,8 @@ image to ansi blocks
 translate image pixel by pixel to ansi blocks
 so that it can be displayed in terminal.
 
+![screenshot](examples/tux-demo.png)
+
 using upper half block and lower half block
 
 https://en.wikipedia.org/wiki/Block_Elements
