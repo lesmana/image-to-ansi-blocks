@@ -8,7 +8,11 @@ tux
 from https://www.reddit.com/r/linux/comments/4tiu19/i_made_a_pixelart_tux_figured_it_could_be_useful/
 (the small one from the comments not the big one)
 
-cat image from https://www.favicon.cc/?action=icon&file_id=851700
+cat
+
+![cat demo](cat-demo.png)
+
+from https://www.favicon.cc/?action=icon&file_id=851700
 
 mario https://www.favicon.cc/?action=icon&file_id=962351
 
