@@ -18,6 +18,7 @@ def parseargv():
   parser.add_argument('--alphathreshold', type=int, default=128)
   parser.add_argument('--paddingattop', action='store_const', dest='paddingheightoffset', const=1, default=0)
   parser.add_argument('--background', type=int, nargs=3)
+  parser.add_argument('--debug', action='store_true')
   args = parser.parse_args()
   if args.background is not None:
     args.background = tuple(args.background)
@@ -66,6 +67,18 @@ def pixelstodoublerows(pixels, width, height):
   doublerows = rowstodoublerows(rows)
   return doublerows
 
+def debugprint(im):
+  pixels = list(im.getdata())
+  width = im.width
+  height = im.height
+  doublerows = pixelstodoublerows(pixels, width, height)
+  linecount = 1
+  for upperrow, lowerrow in doublerows:
+    print('lines', linecount, linecount+1)
+    for upperpixel, lowerpixel in zip(upperrow, lowerrow):
+      print(upperpixel, lowerpixel)
+    linecount += 2
+
 upperhalfblock = '\u2580'
 lowerhalfblock = '\u2584'
 fullblock = '\u2588'
@@ -95,6 +108,8 @@ def doublerowstoansiblocks(doublerows, alphathreshold):
 def main():
   args = parseargv()
   im = openimage(args.filename)
+  if args.debug:
+    debugprint(im)
   im = background(im, args.background)
   im = toevenheight(im, args.paddingheightoffset)
   pixels = list(im.getdata())
