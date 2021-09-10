@@ -82,6 +82,19 @@ class TestBackground(unittest.TestCase):
     self.assertEqual(bm.height, 1)
     self.assertEqual(list(bm.getdata()), [(0,0,0,255), (11,11,11,255), (22,22,22,255)])
 
+class TestBorder(unittest.TestCase):
+
+  def test_border(self):
+    im = Image.new('RGBA', (1,1))
+    im.putdata([(22,22,22,255)])
+    border = (99,99,99)
+    bm = t.border(im, border)
+    self.assertEqual(bm.width, 3)
+    self.assertEqual(bm.height, 3)
+    self.assertEqual(list(bm.getdata()), [
+          (99,99,99,255), (99,99,99,255), (99,99,99,255),
+          (99,99,99,255), (22,22,22,255), (99,99,99,255),
+          (99,99,99,255), (99,99,99,255), (99,99,99,255)])
 
 class TestToEvenHeight(unittest.TestCase):
 

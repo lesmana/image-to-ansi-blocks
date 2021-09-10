@@ -18,10 +18,13 @@ def parseargv():
   parser.add_argument('--alphathreshold', type=int, default=128)
   parser.add_argument('--paddingattop', action='store_const', dest='paddingheightoffset', const=1, default=0)
   parser.add_argument('--background', type=int, nargs=3)
+  parser.add_argument('--border', type=int, nargs=3)
   parser.add_argument('--debug', action='store_true')
   args = parser.parse_args()
   if args.background is not None:
     args.background = tuple(args.background)
+  if args.border is not None:
+    args.border = tuple(args.border)
   return args
 
 def openimage(filename):
@@ -34,6 +37,14 @@ def background(im, background):
   if background is not None:
     bm = Image.new('RGBA', im.size, background)
     bm.alpha_composite(im)
+    return bm
+  else:
+    return im
+
+def border(im, border):
+  if border is not None:
+    bm = Image.new('RGBA', (im.width+2, im.height+2), border)
+    bm.paste(im, (1, 1))
     return bm
   else:
     return im
@@ -111,6 +122,7 @@ def main():
   if args.debug:
     debugprint(im)
   im = background(im, args.background)
+  im = border(im, args.border)
   im = toevenheight(im, args.paddingheightoffset)
   pixels = list(im.getdata())
   width = im.width
