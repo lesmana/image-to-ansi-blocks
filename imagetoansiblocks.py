@@ -57,6 +57,12 @@ def toevenheight(im, paddingheightoffset):
   else:
     return im
 
+def alpha(im, alphathreshold):
+  alphachannel = im.getchannel('A')
+  alphachannel = alphachannel.point(lambda a: 255 if a >= alphathreshold else 0)
+  im.putalpha(alphachannel)
+  return im
+
 def pixelstorows(pixels, width, height):
   iterpixels = iter(pixels)
   rows = []
@@ -124,11 +130,12 @@ def main():
   im = background(im, args.background)
   im = border(im, args.border)
   im = toevenheight(im, args.paddingheightoffset)
+  im = alpha(im, args.alphathreshold)
   pixels = list(im.getdata())
   width = im.width
   height = im.height
   doublerows = pixelstodoublerows(pixels, width, height)
-  for ansiblock in doublerowstoansiblocks(doublerows, args.alphathreshold):
+  for ansiblock in doublerowstoansiblocks(doublerows, 255):
     sys.stdout.write(ansiblock)
 
 if __name__ == '__main__':
