@@ -12,7 +12,7 @@ cat
 
 ![cat demo](cat-demo.png)
 
-from https://www.favicon.cc/?action=icon&file_id=851700
+from https://www.favicon.cc/?action=icon&file_id=805921
 
 bars
 
