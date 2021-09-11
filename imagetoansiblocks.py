@@ -49,7 +49,7 @@ def border(im, border):
   else:
     return im
 
-def toevenheight(im, paddingheightoffset):
+def padding(im, paddingheightoffset):
   if im.height % 2 != 0:
     pm = Image.new('RGBA', (im.width, im.height+1), (0,0,0,0))
     pm.paste(im, (0, paddingheightoffset))
@@ -129,7 +129,7 @@ def main():
     debugprint(im)
   im = background(im, args.background)
   im = border(im, args.border)
-  im = toevenheight(im, args.paddingheightoffset)
+  im = padding(im, args.paddingheightoffset)
   im = alpha(im, args.alphathreshold)
   pixels = list(im.getdata())
   width = im.width

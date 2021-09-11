@@ -103,13 +103,13 @@ class TestAlpha(unittest.TestCase):
     self.assertEqual(list(am.getdata()), [
           (22,22,22,0), (22,22,22,0), (22,22,22,0)])
 
-class TestToEvenHeight(unittest.TestCase):
+class TestPadding(unittest.TestCase):
 
   def test_unevenheight(self):
     im = Image.new('RGBA', (1,1))
     im.putdata([(11,11,11,255)])
     paddingheightoffset = 0
-    pm = t.toevenheight(im, paddingheightoffset)
+    pm = t.padding(im, paddingheightoffset)
     self.assertEqual(pm.width, 1)
     self.assertEqual(pm.height, 2)
     self.assertEqual(list(pm.getdata()), [(11,11,11,255), (0,0,0,0)])
@@ -118,7 +118,7 @@ class TestToEvenHeight(unittest.TestCase):
     im = Image.new('RGBA', (1,2))
     im.putdata([(11,11,11,255), (11,11,11,255)])
     paddingheightoffset = 0
-    pm = t.toevenheight(im, paddingheightoffset)
+    pm = t.padding(im, paddingheightoffset)
     self.assertEqual(pm.width, 1)
     self.assertEqual(pm.height, 2)
     self.assertEqual(list(pm.getdata()), [(11,11,11,255), (11,11,11,255)])
@@ -127,7 +127,7 @@ class TestToEvenHeight(unittest.TestCase):
     im = Image.new('RGBA', (1,1))
     im.putdata([(11,11,11,255)])
     paddingheightoffset = 1
-    pm = t.toevenheight(im, paddingheightoffset)
+    pm = t.padding(im, paddingheightoffset)
     self.assertEqual(pm.width, 1)
     self.assertEqual(pm.height, 2)
     self.assertEqual(list(pm.getdata()), [(0,0,0,0), (11,11,11,255)])
