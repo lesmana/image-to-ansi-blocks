@@ -101,25 +101,25 @@ lowerhalfblock = '\u2584'
 fullblock = '\u2588'
 noblock = ' '
 
-def pixeltoansiblock(upperpixel, lowerpixel, alphathreshold):
+def pixeltoansiblock(upperpixel, lowerpixel):
   #print(upperpixel, lowerpixel)
   ur, ug, ub, ua = upperpixel
   lr, lg, lb, la = lowerpixel
-  if ua < alphathreshold and la < alphathreshold:
+  if ua < 255 and la < 255:
     return noblock
-  elif ua < alphathreshold and la >= alphathreshold:
+  elif ua < 255 and la == 255:
     return f'\033[38;2;{lr};{lg};{lb}m' + lowerhalfblock + '\033[0m'
-  elif ua >= alphathreshold and la < alphathreshold:
+  elif ua == 255 and la < 255:
     return f'\033[38;2;{ur};{ug};{ub}m' + upperhalfblock + '\033[0m'
-  elif ua >= alphathreshold and la >= alphathreshold:
+  elif ua == 255 and la == 255:
     return f'\033[38;2;{ur};{ug};{ub};48;2;{lr};{lg};{lb}m' + upperhalfblock + '\033[0m'
   else:
     raise Exception(f'unexpected alpha value: {ua}, {la}')
 
-def doublerowstoansiblocks(doublerows, alphathreshold):
+def doublerowstoansiblocks(doublerows):
   for upperrow, lowerrow in doublerows:
     for upperpixel, lowerpixel in zip(upperrow, lowerrow):
-      yield pixeltoansiblock(upperpixel, lowerpixel, alphathreshold)
+      yield pixeltoansiblock(upperpixel, lowerpixel)
     yield '\n'
 
 def main():
@@ -135,7 +135,7 @@ def main():
   width = im.width
   height = im.height
   doublerows = pixelstodoublerows(pixels, width, height)
-  for ansiblock in doublerowstoansiblocks(doublerows, 255):
+  for ansiblock in doublerowstoansiblocks(doublerows):
     sys.stdout.write(ansiblock)
 
 if __name__ == '__main__':
