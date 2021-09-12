@@ -34,3 +34,5 @@ bars https://www.favicon.cc/?action=icon&file_id=967040
 mario https://www.spriters-resource.com/nes/supermariobros/sheet/50365/
 
 catmario/syobon https://www.spriters-resource.com/pc_computer/shobonsyobonaction/sheet/62942/
+
+rickroll https://www.favicon.cc/?action=icon&file_id=966151
