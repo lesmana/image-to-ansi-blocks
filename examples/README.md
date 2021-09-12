@@ -31,4 +31,4 @@ dog https://www.spriters-resource.com/pc_computer/undertale/sheet/76649/
 
 bars https://www.favicon.cc/?action=icon&file_id=967040
 
-mario https://www.favicon.cc/?action=icon&file_id=962351
+mario https://www.spriters-resource.com/nes/supermariobros/sheet/50365/
