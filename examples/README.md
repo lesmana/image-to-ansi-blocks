@@ -14,6 +14,12 @@ cat
 
 from https://www.favicon.cc/?action=icon&file_id=805921
 
+dog
+
+![dog-demo](dog-demo.png)
+
+dog https://www.spriters-resource.com/pc_computer/undertale/sheet/76649/
+
 bars
 
 ![bars-demo](bars-demo.png)
@@ -21,5 +27,3 @@ bars
 bars https://www.favicon.cc/?action=icon&file_id=967040
 
 mario https://www.favicon.cc/?action=icon&file_id=962351
-
-dog https://www.spriters-resource.com/pc_computer/undertale/sheet/76649/
