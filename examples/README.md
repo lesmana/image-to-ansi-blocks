@@ -20,6 +20,22 @@ cat
 
 ![cat demo](cat-demo.png)
 
+just a cat.
+
+this time the image is drawn on a terminal with black background.
+since the cat itself is black its pixels "disappear" against the background.
+only the eyes remain since they are white.
+
+the cats eyes so bright piercing through the dark.
+looking straight at your soul.
+
+i am sure the cat is understanding of all your regrets.
+may you be forgiving of your own perceived faults.
+
+with the `--background` argument you can have all transparent pixels
+to be drawn in the requested background color instead.
+
+
 ----
 dog
 
