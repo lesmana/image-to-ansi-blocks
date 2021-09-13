@@ -46,6 +46,21 @@ keep going mario! the princess is certainly in the next castle. maybe.
 ![](mario-demo.png)
 
 ----
+catmario
+
+also known as syobon action
+
+one of the best mario clones out there.
+besides just being a good jump and run
+it is also deeply philosophical and teaches core inner values.
+
+it tought me acceptance and perseverance.
+i learned that i always may try again no matter how often i failed.
+also how to count backwards to negative numbers.
+
+![](catmario-demo.png)
+
+----
 dog
 
 ![dog-demo](dog-demo.png)
@@ -54,11 +69,6 @@ dog
 bars
 
 ![bars-demo](bars-demo.png)
-
-----
-catmario
-
-![](catmario-demo.png)
 
 ----
 rick
