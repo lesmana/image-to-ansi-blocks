@@ -3,7 +3,7 @@ examples for image to ansi blocks
 ---------------------------------
 tux the satisfied penguin
 
-![screenshot](tux-demo.png)
+![screenshot of tux icon in terminal](tux-demo.png)
 
 just sitting there.
 complacent with what the project he stands for has achieved.
@@ -18,7 +18,7 @@ the checkered background represents transparent pixels.
 ----
 cat
 
-![cat demo](cat-demo.png)
+![screenshot of cat icon in terminal](cat-demo.png)
 
 just a cat.
 
@@ -43,7 +43,7 @@ perhaps the most iconic 8 bit pixel ... icon.
 
 keep going mario! the princess is certainly in the next castle. maybe.
 
-![](mario-demo.png)
+![screenshot of mario icon in terminal](mario-demo.png)
 
 ----
 catmario
@@ -58,22 +58,22 @@ it tought me acceptance and perseverance.
 i learned that i always may try again no matter how often i failed.
 also how to count backwards to negative numbers.
 
-![](catmario-demo.png)
+![screenshot of catmario icon in terminal](catmario-demo.png)
 
 ----
 dog
 
-![dog-demo](dog-demo.png)
+![screenshot of dog icon in terminal](dog-demo.png)
 
 ----
 bars
 
-![bars-demo](bars-demo.png)
+![screenshot of bars icon in terminal](bars-demo.png)
 
 ----
 rick
 
-![](rickroll-demo.png)
+![screenshot of rickroll icon in terminal](rickroll-demo.png)
 
 ----
 sources
