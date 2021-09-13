@@ -1,9 +1,19 @@
 examples for image to ansi blocks
 
 ---------------------------------
-tux
+tux the satisfied penguin
 
 ![screenshot](tux-demo.png)
+
+just sitting there.
+complacent with what the project he stands for has achieved.
+while maybe hopefully still dignified and humble enough
+to recognize the achievement of another project represented by a gnu.
+
+in the lower right corner is an image viewer
+showing the original image of tux.
+note that the image is zoomed in a couple hundred percents.
+the checkered background represents transparent pixels.
 
 ----
 cat
