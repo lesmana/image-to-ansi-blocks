@@ -84,6 +84,27 @@ bars
 
 ![screenshot of bars icon in terminal](bars-demo.png)
 
+this image is to demonstrate the alpha handling.
+
+since the terminal has no concept of transparency;
+only foreground color and background color;
+the alpha value of an image has to be flattened to 0 and 255.
+with 0 means take the background color of the terminal
+and 255 means take the color of the pixel.
+
+this image has an alpha gradient from practically transparent
+to fully opaque.
+
+by default alpha is cut off at 128.
+all pixels with lover alpha value is handled as if alpha is 0.
+all pixels with higher alpha value is handled as if alpha is 255.
+
+you can customize alpha threshold with `--alphathreshold`.
+
+or you can use `--background` to have all alpha pixels
+to be calculated against the requested background color.
+the resulting image will have all pixels at alpha value of 255.
+
 ----
 rick
 
