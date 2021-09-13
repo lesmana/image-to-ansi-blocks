@@ -65,6 +65,20 @@ dog
 
 ![screenshot of dog icon in terminal](dog-demo.png)
 
+this dog is from the game undertale.
+i have not played that game so i can not say anything about it.
+i just liked the dog smile.
+
+this dog is again drawn in a terminal with black background.
+at first it seems just like a white dog.
+but with some other background color it is visible
+that the dog has a black pixel line around it.
+
+the black pixel line disappears at the border of the image.
+with `--border` you can draw a one pixel line around the image.
+this will prevent a pixel line at the border to disappear
+against the terminal background color.
+
 ----
 bars
 
