@@ -37,6 +37,15 @@ to be drawn in the requested background color instead.
 
 
 ----
+mario
+
+perhaps the most iconic 8 bit pixel ... icon.
+
+keep going mario! the princess is certainly in the next castle. maybe.
+
+![](mario-demo.png)
+
+----
 dog
 
 ![dog-demo](dog-demo.png)
@@ -45,11 +54,6 @@ dog
 bars
 
 ![bars-demo](bars-demo.png)
-
-----
-mario
-
-![](mario-demo.png)
 
 ----
 catmario
