@@ -110,6 +110,24 @@ rick
 
 ![screenshot of rickroll icon in terminal](rickroll-demo.png)
 
+rick is no stranger to love and knows the rules.
+he is sure that you know too.
+he is fully commited and you would not get this from any other guy.
+
+he wants you to know that he is never going to:
+
+* give you up
+* let you down
+* run around and desert you
+
+further he is never going to:
+
+* make you cry
+* say goodbye
+* tell a lie and hurt you
+
+when rick rolls all is awesome.
+
 ----
 sources
 
