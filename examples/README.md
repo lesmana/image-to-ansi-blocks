@@ -1,31 +1,39 @@
 examples for image to ansi blocks
----------------------------------
 
+---------------------------------
 tux
 
 ![screenshot](tux-demo.png)
 
+----
 cat
 
 ![cat demo](cat-demo.png)
 
-
+----
 dog
 
 ![dog-demo](dog-demo.png)
 
-
+----
 bars
 
 ![bars-demo](bars-demo.png)
 
+----
+mario
 
 ![](mario-demo.png)
 
+----
+catmario
+
 ![](catmario-demo.png)
 
-![](rickroll-demo.png)
+----
+rick
 
+![](rickroll-demo.png)
 
 ----
 sources
