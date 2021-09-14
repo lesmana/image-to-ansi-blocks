@@ -10,10 +10,19 @@ complacent with what the project he stands for has achieved.
 while maybe hopefully still dignified and humble enough
 to recognize the achievement of another project represented by a gnu.
 
-in the lower right corner is an image viewer
-showing the original image of tux.
+the image viewer in the lower right is showing the original image of tux.
 note that the image is zoomed in a couple hundred percents.
 the checkered background represents transparent pixels.
+
+the terminal has no concept of transparency.
+just foreground and background color.
+every terminal character can be given color information.
+not giving any color information will result in the terminal
+painting the character with the default colors.
+
+transparent pixels will be given no background color.
+so the terminal paints them with the default background color.
+in this case white.
 
 ----
 cat
