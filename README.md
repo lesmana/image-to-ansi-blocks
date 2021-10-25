@@ -16,6 +16,31 @@ effectively two pixels in one ascii char
 
 for examples see examples directory
 
+background information
+----------------------
+
+the smallest drawing element of the terminal is a character.
+a character might be a letter, a number, a symbol,
+and, more recently, an emoji.
+
+on a typical terminal every character is the same size (monospace font).
+a character is about twice as high as wide.
+a character has a foreground color and a background color.
+for example a white letter on black background.
+the foreground color is white and the background color is black.
+practically all modern terminals can draw all RGB colors
+for foreground and background color.
+
+since a character is twice as high as wide we can fit two pixels
+in one character.
+one pixel in top half and second pixel in bottom half.
+we do so using the upperhalfblock (or lowerhalfblock) character.
+the upperhalfblock character has a block with foreground color at the top
+and a block with background color at the bottom.
+so we can assign the top half pixel color to foreground color
+and the bottom half pixel color to background color.
+
+
 limitations:
 ------------
 
