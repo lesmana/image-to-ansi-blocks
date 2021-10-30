@@ -6,15 +6,7 @@ so that it can be displayed in terminal.
 
 ![screenshot](examples/tux-demo.png)
 
-using upper half block and lower half block
-
-https://en.wikipedia.org/wiki/Block_Elements
-
-using foreground and background color
-
-effectively two pixels in one ascii char
-
-for examples see examples directory
+for more screenshots see examples directory
 
 background information
 ----------------------
@@ -40,6 +32,7 @@ and a block with background color at the bottom.
 so we can assign the top half pixel color to foreground color
 and the bottom half pixel color to background color.
 
+https://en.wikipedia.org/wiki/Block_Elements
 
 limitations:
 ------------
