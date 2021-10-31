@@ -6,7 +6,22 @@ so that it can be displayed in terminal.
 
 ![screenshot](examples/tux-demo.png)
 
-for more screenshots see examples directory
+for more screenshots see examples directory.
+
+the tool takes an image and outputs a bunch of characters.
+the characters are terminal code for something similar to
+"pixels with color information".
+
+it does not resize or sample or dither the image.
+if the image is too big you will get a jumbled mess of colored pixels.
+it only works well with tiny images. icons to be precise.
+
+the output of the tool can be saved in a file.
+if the file is to be displayed in the terminal at a later time
+the image will be shown.
+
+main use case for me is to put a server logo icon in /etc/motd.
+so when i ssh into a server i get a strong visual cue which server it is.
 
 background information
 ----------------------
