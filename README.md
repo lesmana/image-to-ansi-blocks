@@ -40,12 +40,14 @@ for foreground and background color.
 
 since a character is twice as high as wide we can fit two pixels
 in one character.
-one pixel in top half and second pixel in bottom half.
+one pixel in top half of the character and the other pixel in bottom half.
 we do so using the upperhalfblock (or lowerhalfblock) character.
-the upperhalfblock character has a block with foreground color at the top
-and a block with background color at the bottom.
-so we can assign the top half pixel color to foreground color
-and the bottom half pixel color to background color.
+the upperhalfblock is a character with a block at the upper half.
+that block will be drawn in foreground color.
+the lower half will will be drawn using background color.
+we assign the top pixel color to foreground color
+and the bottom pixel color to background color.
+when the character gets drawn it will effectively show the two pixels.
 
 https://en.wikipedia.org/wiki/Block_Elements
 
