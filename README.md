@@ -35,19 +35,22 @@ a character is about twice as high as wide.
 a character has a foreground color and a background color.
 for example a white letter on black background.
 the foreground color is white and the background color is black.
-practically all modern terminals can draw all RGB colors
-for foreground and background color.
 
 since a character is twice as high as wide we can fit two pixels
 in one character.
 one pixel in top half of the character and the other pixel in bottom half.
 we do so using the upperhalfblock (or lowerhalfblock) character.
-the upperhalfblock is a character with a block at the upper half.
-that block will be drawn in foreground color.
-the lower half will will be drawn using background color.
-we assign the top pixel color to foreground color
-and the bottom pixel color to background color.
-when the character gets drawn it will effectively show the two pixels.
+the upperhalfblock is a character with a block at the upper half
+and nothing at the lower half.
+the block at the upper half will be drawn in foreground color.
+the nothing at lower half will will be drawn in background color.
+
+now we assign the color of the top pixel to foreground color
+and the color of the bottom pixel to background color.
+when the character gets drawn it will effectively draw the two pixels.
+
+practically all modern terminals can draw all RGB colors
+for foreground and background color.
 
 https://en.wikipedia.org/wiki/Block_Elements
 
