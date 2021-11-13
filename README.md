@@ -55,10 +55,10 @@ when the character gets drawn it will effectively draw the two pixels.
 there is also the lowerhalfblock which is just
 the opposite of the upperhalfblock.
 
+https://en.wikipedia.org/wiki/Block_Elements
+
 practically all modern terminals can draw all RGB colors
 for foreground and background color.
-
-https://en.wikipedia.org/wiki/Block_Elements
 
 here a list of terminal supporting RGB
 
