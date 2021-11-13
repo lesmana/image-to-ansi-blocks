@@ -63,7 +63,10 @@ def alpha(im, alphathreshold):
   im.putalpha(alphachannel)
   return im
 
-def pixelstorows(pixels, width, height):
+def pixelstorows(im):
+  pixels = list(im.getdata())
+  width = im.width
+  height = im.height
   iterpixels = iter(pixels)
   rows = []
   for y in range(height):
@@ -79,16 +82,13 @@ def rowstodoublerows(rows):
   doublerows = itertools.zip_longest(iterrows, iterrows)
   return doublerows
 
-def pixelstodoublerows(pixels, width, height):
-  rows = pixelstorows(pixels, width, height)
+def pixelstodoublerows(im):
+  rows = pixelstorows(im)
   doublerows = rowstodoublerows(rows)
   return doublerows
 
 def debugprint(im):
-  pixels = list(im.getdata())
-  width = im.width
-  height = im.height
-  doublerows = pixelstodoublerows(pixels, width, height)
+  doublerows = pixelstodoublerows(im)
   linecount = 1
   for upperrow, lowerrow in doublerows:
     print('lines', linecount, linecount+1)
@@ -131,10 +131,7 @@ def main():
   im = border(im, args.border)
   im = padding(im, args.paddingheightoffset)
   im = alpha(im, args.alphathreshold)
-  pixels = list(im.getdata())
-  width = im.width
-  height = im.height
-  doublerows = pixelstodoublerows(pixels, width, height)
+  doublerows = pixelstodoublerows(im)
   for ansiblock in doublerowstoansiblocks(doublerows):
     sys.stdout.write(ansiblock)
 
