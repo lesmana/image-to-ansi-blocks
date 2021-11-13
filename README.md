@@ -12,7 +12,8 @@ the tool takes an image and outputs a bunch of characters.
 the characters are terminal code for something similar to
 "pixels with color information".
 
-it does not resize or sample or dither the image.
+it does not resize or dither the image.
+one pixel in the image will be one pixel in the terminal.
 if the image is too big you will get a jumbled mess of colored pixels.
 it only works well with tiny images. icons to be precise.
 
