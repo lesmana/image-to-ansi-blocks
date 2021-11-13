@@ -60,12 +60,14 @@ for foreground and background color.
 
 https://en.wikipedia.org/wiki/Block_Elements
 
+here a list of terminal supporting RGB
+
+https://gist.github.com/XVilka/8346728
+
 limitations:
 ------------
 
 only rgb color which may or may not be supported by your terminal.
-see here for list of terminal supporting rgb:
-https://gist.github.com/XVilka/8346728
 
 terminal has no transparency.
 pixels with transparency will become either total transparent or full color
