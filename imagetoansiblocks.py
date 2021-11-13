@@ -17,14 +17,14 @@ def parseargv():
   parser.add_argument('filename')
   parser.add_argument('--alphathreshold', type=int, default=128)
   parser.add_argument('--paddingattop', action='store_const', dest='paddingheightoffset', const=1, default=0)
-  parser.add_argument('--background', type=int, nargs=3)
-  parser.add_argument('--border', type=int, nargs=3)
+  parser.add_argument('--background', type=int, nargs=3, dest='backgroundcolor')
+  parser.add_argument('--border', type=int, nargs=3, dest='bordercolor')
   parser.add_argument('--debug', action='store_true')
   args = parser.parse_args()
-  if args.background is not None:
-    args.background = tuple(args.background)
-  if args.border is not None:
-    args.border = tuple(args.border)
+  if args.backgroundcolor is not None:
+    args.backgroundcolor = tuple(args.backgroundcolor)
+  if args.bordercolor is not None:
+    args.bordercolor = tuple(args.bordercolor)
   return args
 
 def openimage(filename):
@@ -33,17 +33,17 @@ def openimage(filename):
     im = im.convert('RGBA')
     return im
 
-def background(im, background):
-  if background is not None:
-    bm = Image.new('RGBA', im.size, background)
+def background(im, backgroundcolor):
+  if backgroundcolor is not None:
+    bm = Image.new('RGBA', im.size, backgroundcolor)
     bm.alpha_composite(im)
     return bm
   else:
     return im
 
-def border(im, border):
-  if border is not None:
-    bm = Image.new('RGBA', (im.width+2, im.height+2), border)
+def border(im, bordercolor):
+  if bordercolor is not None:
+    bm = Image.new('RGBA', (im.width+2, im.height+2), bordercolor)
     bm.paste(im, (1, 1))
     return bm
   else:
@@ -127,8 +127,8 @@ def main():
   im = openimage(args.filename)
   if args.debug:
     debugprint(im)
-  im = background(im, args.background)
-  im = border(im, args.border)
+  im = background(im, args.backgroundcolor)
+  im = border(im, args.bordercolor)
   im = padding(im, args.paddingheightoffset)
   im = alpha(im, args.alphathreshold)
   doublerows = pixelstodoublerows(im)
