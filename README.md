@@ -24,6 +24,20 @@ the image will be shown.
 main use case for me is to put a server logo icon in /etc/motd.
 so when i ssh into a server i get a strong visual cue which server it is.
 
+technical details
+-----------------
+
+an example output of the tool might look like this
+
+```
+\033[38;2;255;0;0;48;2;0;0;255m\u2580\033[0m\033[38;2;0;255;0m\u2580\033[0m\n
+```
+
+this code will make the terminal draw a 2x2 "image".
+the pixels in the image has the following colors (left to right, top to bottom):
+red, green, blue, and "transparent".
+transparent meaning whatever the background color of your terminal is.
+
 background information
 ----------------------
 
