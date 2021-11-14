@@ -38,6 +38,15 @@ the pixels in the image has the following colors (left to right, top to bottom):
 red, green, blue, and "transparent".
 transparent meaning whatever the background color of your terminal is.
 
+technically this draws two characters.
+both times the upperhalfblock characters.
+the first character in the foreground color red and background color blue.
+and the second character in the foreground color green
+and no defined background color.
+no defined background color means
+the default background color of the terminal will be drawn.
+
+
 background information
 ----------------------
 
