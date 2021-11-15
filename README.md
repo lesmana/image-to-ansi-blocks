@@ -87,6 +87,31 @@ and no defined background color.
 no defined background color means
 the default background color of the terminal will be drawn.
 
+let's take that thing apart
+
+first we separate the two characters
+
+```
+\033[38;2;255;0;0;48;2;0;0;255m\u2580\033[0m \033[38;2;0;255;0m\u2580\033[0m\n
+^ first                                      ^ second
+```
+
+each block consists of color information,
+character to print,
+and reset of color information.
+
+```
+\033[38;2;255;0;0;48;2;0;0;255m \u2580 \033[0m
+^ color                         ^ char ^ reset color
+```
+
+the character is the upperhalfblock.
+the color information tells the terminal what color we want
+as foreground and background color.
+all the following characters will then be printed in those colors.
+at the end we reset the color information
+so the terminal reverts back to the default colors.
+
 
 limitations:
 ------------
