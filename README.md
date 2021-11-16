@@ -113,7 +113,7 @@ at the end we reset the color information
 so the terminal reverts back to the default colors.
 
 the color block begins with an escape code (`\033[`).
-so the terminal nows what follows is terminal code
+so the terminal knows what follows is terminal code
 and not characters to be printed.
 
 the terminal code block spans from the escape to the `m`.
