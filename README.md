@@ -112,28 +112,28 @@ all the following characters will then be printed in those colors.
 at the end we reset the color information
 so the terminal reverts back to the default colors.
 
-the color block begins with an escape code (\033).
+the color block begins with an escape code (`\033[`).
 so the terminal nows what follows is terminal code
 and not characters to be printed.
 
-the terminal code block spans from the escape to the m.
-the m is the terminal code for color.
-everything else between those two symbols are the parameters for m.
+the terminal code block spans from the escape to the `m`.
+the `m` is the terminal code for color.
+everything else between those two symbols are the parameters for `m`.
 
-the 38 signifies foreground color.
-the 2 signifies RGB color.
+the `38` signifies foreground color.
+the `2` signifies RGB color.
 the following three numbers are the actual R and G and B parts.
 
-the 48 signifies background color.
-the 2 and the following three numbers again the RGB color.
+the `48` signifies background color.
+the `2` and the following three numbers again the RGB color.
 
 once the colors are set
 every character from now on are printed in those colors.
 
-in the reset color block we only have 0 as parameter for m.
+in the reset color block we only have `0` as parameter for `m`.
 that means to reset the color to the terminal default colors.
 
-in the second code block we only have 38 for foreground color.
+in the second code block we only have `38` for foreground color.
 that means the background color stays the default color.
 
 limitations:
