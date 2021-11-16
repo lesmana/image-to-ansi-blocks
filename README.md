@@ -135,6 +135,8 @@ that means to reset the color to the terminal default colors.
 
 in the second code block we only have `38` for foreground color.
 that means the background color stays the default color.
+or to be more precise: the background color stays
+at whatever it was set before this code.
 
 limitations:
 ------------
