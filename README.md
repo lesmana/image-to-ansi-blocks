@@ -69,6 +69,12 @@ here a list of terminal supporting RGB
 
 https://gist.github.com/XVilka/8346728
 
+the terminal has no concept of alpha values for transparency.
+a "terminal pixel" is either fully transparent or fully opaque.
+so either the alpha values are cut off at a certain threshold.
+or the alpha pixels are "flattened" to a certain color
+before translating the image to terminal pixels.
+
 technical details
 -----------------
 
