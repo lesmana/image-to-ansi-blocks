@@ -12,10 +12,14 @@ the tool takes an image and outputs a bunch of characters.
 the characters are terminal code for something similar to
 "pixels with color information".
 
-it does not resize or dither the image.
-one pixel in the image will be one pixel in the terminal.
-if the image is too big you will get a jumbled mess of colored pixels.
+it does not change the size of the image.
+one pixel in the image will always be one pixel in the terminal.
+the only thing changed are the color of the transparent pixels
+because the terminal has a very limited transparency.
+also at the request of the user a one pixel border might be added.
+
 it only works well with tiny images. icons to be precise.
+if the image is too big you will get a jumbled mess of colored pixels.
 
 the output of the tool can be saved in a file.
 if the file is to be displayed in the terminal at a later time
