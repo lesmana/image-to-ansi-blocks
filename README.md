@@ -31,6 +31,15 @@ so when i ssh into a server i get a strong visual cue which server it is.
 background information
 ----------------------
 
+the drawing elements of an image are pixels.
+pixels are typically square.
+pixels have a color and transparency.
+the color is a combination of a red, green, and blue value.
+the transparency is determined by an alpha value.
+the color is often abbreviated to RGB.
+the transparency to A.
+together it is RGBA.
+
 the smallest drawing element of the terminal is a character.
 a character might be a letter, a number, a symbol,
 and, more recently, an emoji.
