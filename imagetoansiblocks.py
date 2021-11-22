@@ -90,8 +90,12 @@ def debugprint(im):
   linecount = 1
   for upperrow, lowerrow in doublerows:
     print('lines', linecount, linecount+1)
-    for upperpixel, lowerpixel in zip(upperrow, lowerrow):
-      print(upperpixel, lowerpixel)
+    try:
+      for upperpixel, lowerpixel in zip(upperrow, lowerrow):
+        print(upperpixel, lowerpixel)
+    except TypeError:
+      for upperpixel in upperrow:
+        print(upperpixel, lowerrow)
     linecount += 2
 
 upperhalfblock = '\u2580'
