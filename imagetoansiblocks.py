@@ -21,10 +21,6 @@ def parseargv():
   parser.add_argument('--border', type=int, nargs=3, dest='bordercolor')
   parser.add_argument('--debug', action='store_true')
   args = parser.parse_args()
-  if args.backgroundcolor is not None:
-    args.backgroundcolor = tuple(args.backgroundcolor)
-  if args.bordercolor is not None:
-    args.bordercolor = tuple(args.bordercolor)
   return args
 
 def openimage(filename):
@@ -35,6 +31,7 @@ def openimage(filename):
 
 def background(im, backgroundcolor):
   if backgroundcolor is not None:
+    backgroundcolor = tuple(backgroundcolor)
     bm = Image.new('RGBA', im.size, backgroundcolor)
     bm.alpha_composite(im)
     return bm
@@ -43,6 +40,7 @@ def background(im, backgroundcolor):
 
 def border(im, bordercolor):
   if bordercolor is not None:
+    bordercolor = tuple(bordercolor)
     bm = Image.new('RGBA', (im.width+2, im.height+2), bordercolor)
     bm.paste(im, (1, 1))
     return bm
