@@ -76,6 +76,9 @@ def pixelstorows(im):
   return rows
 
 def rowstodoublerows(rows):
+  # zip over the same iterator
+  # for list [1,2,3,4,5]
+  # will get [(1,2), (3,4), (5,None)]
   iterrows = iter(rows)
   doublerows = itertools.zip_longest(iterrows, iterrows)
   return doublerows
