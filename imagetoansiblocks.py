@@ -11,6 +11,7 @@ import pprint
 import argparse
 
 from PIL import Image
+from PIL import ImageColor
 
 def parseargv():
   parser = argparse.ArgumentParser()
@@ -31,7 +32,7 @@ def openimage(filename):
 
 def background(im, backgroundcolor):
   if backgroundcolor is not None:
-    backgroundcolor = tuple(backgroundcolor)
+    backgroundcolor = ImageColor.getrgb('rgb' + str(backgroundcolor))
     bm = Image.new('RGBA', im.size, backgroundcolor)
     bm.alpha_composite(im)
     return bm
@@ -40,7 +41,7 @@ def background(im, backgroundcolor):
 
 def border(im, bordercolor):
   if bordercolor is not None:
-    bordercolor = tuple(bordercolor)
+    bordercolor = ImageColor.getrgb('rgb' + str(bordercolor))
     bm = Image.new('RGBA', (im.width+2, im.height+2), bordercolor)
     bm.paste(im, (1, 1))
     return bm
