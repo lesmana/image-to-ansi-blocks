@@ -42,8 +42,8 @@ class TestBackground(unittest.TestCase):
   def test_noalpha(self):
     im = Image.new('RGBA', (1,1))
     im.putdata([(22,22,22,255)])
-    backgroundcolor = 'rgb(0,0,0)'
-    bm = t.background(im, backgroundcolor)
+    colorstr = 'rgb(0,0,0)'
+    bm = t.background(im, colorstr)
     self.assertEqual(bm.width, 1)
     self.assertEqual(bm.height, 1)
     self.assertEqual(list(bm.getdata()), [(22,22,22,255)])
@@ -51,8 +51,8 @@ class TestBackground(unittest.TestCase):
   def test_withalpha(self):
     im = Image.new('RGBA', (3,1))
     im.putdata([(22,22,22,0), (22,22,22,128), (22,22,22,255)])
-    backgroundcolor = 'rgb(0,0,0)'
-    bm = t.background(im, backgroundcolor)
+    colorstr = 'rgb(0,0,0)'
+    bm = t.background(im, colorstr)
     self.assertEqual(bm.width, 3)
     self.assertEqual(bm.height, 1)
     self.assertEqual(list(bm.getdata()), [(0,0,0,255), (11,11,11,255), (22,22,22,255)])
@@ -62,8 +62,8 @@ class TestBorder(unittest.TestCase):
   def test_border(self):
     im = Image.new('RGBA', (1,1))
     im.putdata([(22,22,22,255)])
-    bordercolor = 'rgb(99,99,99)'
-    bm = t.border(im, bordercolor)
+    colorstr = 'rgb(99,99,99)'
+    bm = t.border(im, colorstr)
     self.assertEqual(bm.width, 3)
     self.assertEqual(bm.height, 3)
     self.assertEqual(list(bm.getdata()), [
