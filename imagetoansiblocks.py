@@ -17,7 +17,7 @@ def parseargv():
   parser = argparse.ArgumentParser()
   parser.add_argument('filename')
   parser.add_argument('--alphathreshold', type=int, default=128)
-  parser.add_argument('--paddingattop', dest='paddingheightoffset', action='store_const', const=1, default=0)
+  parser.add_argument('--paddingattop', action='store_true')
   parser.add_argument('--background', dest='backgroundcolor')
   parser.add_argument('--border', dest='bordercolor')
   parser.add_argument('--debug', action='store_true')
@@ -48,10 +48,11 @@ def border(im, colorstr):
   else:
     return im
 
-def padding(im, paddingheightoffset):
+def padding(im, paddingattop):
   if im.height % 2 != 0:
+    offset = 1 if paddingattop else 0
     pm = Image.new('RGBA', (im.width, im.height+1), (0,0,0,0))
-    pm.paste(im, (0, paddingheightoffset))
+    pm.paste(im, (0, offset))
     return pm
   else:
     return im
@@ -135,7 +136,7 @@ def main():
     debugprint(im)
   im = background(im, args.backgroundcolor)
   im = border(im, args.bordercolor)
-  im = padding(im, args.paddingheightoffset)
+  im = padding(im, args.paddingattop)
   im = alpha(im, args.alphathreshold)
   doublerows = pixelstodoublerows(im)
   for ansiblock in doublerowstoansiblocks(doublerows):

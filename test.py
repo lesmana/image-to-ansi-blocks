@@ -108,8 +108,8 @@ class TestPadding(unittest.TestCase):
   def test_unevenheight(self):
     im = Image.new('RGBA', (1,1))
     im.putdata([(11,11,11,255)])
-    paddingheightoffset = 0
-    pm = t.padding(im, paddingheightoffset)
+    paddingattop = False
+    pm = t.padding(im, paddingattop)
     self.assertEqual(pm.width, 1)
     self.assertEqual(pm.height, 2)
     self.assertEqual(list(pm.getdata()), [(11,11,11,255), (0,0,0,0)])
@@ -117,8 +117,8 @@ class TestPadding(unittest.TestCase):
   def test_evenheight(self):
     im = Image.new('RGBA', (1,2))
     im.putdata([(11,11,11,255), (11,11,11,255)])
-    paddingheightoffset = 0
-    pm = t.padding(im, paddingheightoffset)
+    paddingattop = False
+    pm = t.padding(im, paddingattop)
     self.assertEqual(pm.width, 1)
     self.assertEqual(pm.height, 2)
     self.assertEqual(list(pm.getdata()), [(11,11,11,255), (11,11,11,255)])
@@ -126,8 +126,8 @@ class TestPadding(unittest.TestCase):
   def test_paddingattop(self):
     im = Image.new('RGBA', (1,1))
     im.putdata([(11,11,11,255)])
-    paddingheightoffset = 1
-    pm = t.padding(im, paddingheightoffset)
+    paddingattop = True
+    pm = t.padding(im, paddingattop)
     self.assertEqual(pm.width, 1)
     self.assertEqual(pm.height, 2)
     self.assertEqual(list(pm.getdata()), [(0,0,0,0), (11,11,11,255)])
