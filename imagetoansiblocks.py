@@ -17,7 +17,7 @@ def parseargv():
   parser = argparse.ArgumentParser()
   parser.add_argument('filename')
   parser.add_argument('--alphathreshold', type=int, default=128)
-  parser.add_argument('--paddingattop', action='store_const', dest='paddingheightoffset', const=1, default=0)
+  parser.add_argument('--paddingattop', dest='paddingheightoffset', action='store_const', const=1, default=0)
   parser.add_argument('--background', dest='backgroundcolor')
   parser.add_argument('--border', dest='bordercolor')
   parser.add_argument('--debug', action='store_true')
