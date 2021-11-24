@@ -2,6 +2,4 @@ todo
 
 rename alphathreshold to transparency and allow percent value as argument
 
-allow color names for background. pil understands css color names
-
 support ansi 256 color mode?
