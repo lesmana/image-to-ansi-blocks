@@ -30,19 +30,19 @@ def openimage(filename):
     im = im.convert('RGBA')
     return im
 
-def background(im, backgroundcolor):
-  if backgroundcolor is not None:
-    backgroundcolor = ImageColor.getrgb('rgb' + str(backgroundcolor))
-    bm = Image.new('RGBA', im.size, backgroundcolor)
+def background(im, color):
+  if color is not None:
+    color = ImageColor.getrgb('rgb' + str(color))
+    bm = Image.new('RGBA', im.size, color)
     bm.alpha_composite(im)
     return bm
   else:
     return im
 
-def border(im, bordercolor):
-  if bordercolor is not None:
-    bordercolor = ImageColor.getrgb('rgb' + str(bordercolor))
-    bm = Image.new('RGBA', (im.width+2, im.height+2), bordercolor)
+def border(im, color):
+  if color is not None:
+    color = ImageColor.getrgb('rgb' + str(color))
+    bm = Image.new('RGBA', (im.width+2, im.height+2), color)
     bm.paste(im, (1, 1))
     return bm
   else:
