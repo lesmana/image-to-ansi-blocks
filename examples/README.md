@@ -1,5 +1,11 @@
 examples for image to ansi blocks
 
+note that some screenshots show that `--background` or `--border`
+expects three further arguments for red, green, and blue.
+this has since been changed.
+those arguments now expect a "color string" as defined by ImageColor of PIL.
+https://pillow.readthedocs.io/en/stable/reference/ImageColor.html
+
 ---------------------------------
 tux the satisfied penguin
 

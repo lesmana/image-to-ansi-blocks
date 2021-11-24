@@ -168,7 +168,7 @@ pixels with transparency will become either total transparent or full color
 
 this can be customized using --alphathreshold
 
-or use --background r g b to flatten alpha values
+or use --background color to flatten alpha values
 
 requirements:
 -------------
