@@ -16,7 +16,7 @@ from PIL import ImageColor
 def parseargv():
   parser = argparse.ArgumentParser()
   parser.add_argument('filename')
-  parser.add_argument('--transparency', type=int, default=128, dest='alphathreshold', metavar='THRESHOLD')
+  parser.add_argument('--transparency', type=int, dest='alphathreshold', metavar='THRESHOLD')
   parser.add_argument('--paddingattop', action='store_true')
   parser.add_argument('--background', dest='backgroundcolor', metavar='COLOR')
   parser.add_argument('--border', dest='bordercolor', metavar='COLOR')
@@ -58,6 +58,7 @@ def padding(im, paddingattop):
     return im
 
 def alpha(im, threshold):
+  threshold = 128 if threshold is None else threshold
   alphachannel = im.getchannel('A')
   alphachannel = alphachannel.point(lambda a: 255 if a >= threshold else 0)
   im.putalpha(alphachannel)
