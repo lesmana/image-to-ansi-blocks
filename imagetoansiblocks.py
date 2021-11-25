@@ -16,7 +16,7 @@ from PIL import ImageColor
 def parseargv():
   parser = argparse.ArgumentParser()
   parser.add_argument('filename')
-  parser.add_argument('--alphathreshold', type=int, default=128)
+  parser.add_argument('--transparency', type=int, default=128, dest='alphathreshold', metavar='THRESHOLD')
   parser.add_argument('--paddingattop', action='store_true')
   parser.add_argument('--background', dest='backgroundcolor', metavar='COLOR')
   parser.add_argument('--border', dest='bordercolor', metavar='COLOR')
