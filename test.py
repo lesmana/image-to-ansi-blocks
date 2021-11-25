@@ -76,8 +76,8 @@ class TestAlpha(unittest.TestCase):
   def test_middle(self):
     im = Image.new('RGBA', (1,3))
     im.putdata([(22,22,22,30), (22,22,22,130), (22,22,22,230)])
-    alphathreshold = 128
-    am = t.alpha(im, alphathreshold)
+    threshold = 128
+    am = t.alpha(im, threshold)
     self.assertEqual(am.width, 1)
     self.assertEqual(am.height, 3)
     self.assertEqual(list(am.getdata()), [
@@ -86,8 +86,8 @@ class TestAlpha(unittest.TestCase):
   def test_low(self):
     im = Image.new('RGBA', (1,3))
     im.putdata([(22,22,22,30), (22,22,22,130), (22,22,22,230)])
-    alphathreshold = 10
-    am = t.alpha(im, alphathreshold)
+    threshold = 10
+    am = t.alpha(im, threshold)
     self.assertEqual(am.width, 1)
     self.assertEqual(am.height, 3)
     self.assertEqual(list(am.getdata()), [
@@ -96,8 +96,8 @@ class TestAlpha(unittest.TestCase):
   def test_high(self):
     im = Image.new('RGBA', (1,3))
     im.putdata([(22,22,22,30), (22,22,22,130), (22,22,22,230)])
-    alphathreshold = 250
-    am = t.alpha(im, alphathreshold)
+    threshold = 250
+    am = t.alpha(im, threshold)
     self.assertEqual(am.width, 1)
     self.assertEqual(am.height, 3)
     self.assertEqual(list(am.getdata()), [
