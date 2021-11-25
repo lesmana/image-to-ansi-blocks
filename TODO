@@ -1,5 +1,5 @@
 todo
 
-rename alphathreshold to transparency and allow percent value as argument
+allow percent for transparency?
 
 support ansi 256 color mode?
