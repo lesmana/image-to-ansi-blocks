@@ -57,9 +57,9 @@ def padding(im, paddingattop):
   else:
     return im
 
-def alpha(im, alphathreshold):
+def alpha(im, threshold):
   alphachannel = im.getchannel('A')
-  alphachannel = alphachannel.point(lambda a: 255 if a >= alphathreshold else 0)
+  alphachannel = alphachannel.point(lambda a: 255 if a >= threshold else 0)
   im.putalpha(alphachannel)
   return im
 
