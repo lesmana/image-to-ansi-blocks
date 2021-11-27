@@ -33,7 +33,7 @@ background information
 ----------------------
 
 the drawing elements of an image are pixels.
-pixels are typically square.
+pixels are square.
 pixels have a color and transparency.
 the color is a combination of a red, green, and blue value.
 the transparency is determined by an alpha value.
@@ -42,14 +42,10 @@ the transparency to A.
 together it is RGBA.
 
 the smallest drawing element of the terminal is a character.
-a character might be a letter, a number, a symbol,
-and, more recently, an emoji.
-
-on a typical terminal every character is the same size (monospace font).
-a character is about twice as high as wide.
+a character is typically about twice as high as wide.
 a character has a foreground color and a background color.
-for example a white letter on black background.
-the foreground color is white and the background color is black.
+both foreground and background color can be any RGB combo
+but no transparency.
 
 since a character is twice as high as wide,
 and a character has two colors (foreground and background color),
@@ -58,19 +54,19 @@ one pixel in the top half in foreground color
 and the other pixel in the bottom half in background color.
 we just need such a symbol.
 
-the upperhalfblock is a symbol
-with a block at the upper half and nothing at the lower half.
+the upperhalfblock is such a symbol
+it has a block at the upper half and nothing at the lower half.
 the block at the upper half will be drawn in foreground color.
 the nothing at lower half will will be drawn in background color.
+
+(there is also the lowerhalfblock which is just
+the opposite of the upperhalfblock.)
+
+https://en.wikipedia.org/wiki/Block_Elements
 
 now we assign the color of the top pixel to foreground color
 and the color of the bottom pixel to background color.
 when the character gets drawn it will effectively draw the two pixels.
-
-there is also the lowerhalfblock which is just
-the opposite of the upperhalfblock.
-
-https://en.wikipedia.org/wiki/Block_Elements
 
 practically all modern terminals can draw all RGB colors
 for foreground and background color.
@@ -79,12 +75,15 @@ here a list of terminal supporting RGB
 
 https://gist.github.com/XVilka/8346728
 
-the terminal has no concept of alpha values for transparency.
-a "terminal pixel" is either fully transparent or fully opaque.
-so either the alpha values are cut off at a certain threshold
-(higher become opaque and lower become fully transparent).
-or the alpha pixels are "flattened" to a certain color
-before translating the image to terminal pixels.
+fully transparent pixels have no color.
+they will be translated to the default background color.
+or a color selected by the user.
+
+partially transparent pixels need to be decided.
+either be made fully transparent.
+or be made fully opaque.
+or be "flattened" with a user selected background color.
+all this can be customized by the user.
 
 technical details
 -----------------
