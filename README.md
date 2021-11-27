@@ -12,21 +12,22 @@ the tool takes an image and outputs a bunch of characters.
 the characters are terminal code for something similar to
 "pixels with color information".
 
-it does not change the size of the image.
+the output of the tool can be redirected to a file.
+if the file is to be displayed in the terminal at a later time
+the image will be shown
+(because the terminal will interpret the terminal code).
+
+main use case for me is to put a server logo icon in /etc/motd.
+so when i ssh into a server i get a strong visual cue which server it is.
+
+the tool does not change the size of the image.
 one pixel in the image will always be one pixel in the terminal.
 the only thing changed are the color of the transparent pixels
-because the terminal has a very limited transparency.
+because the terminal has no real concept of transparency.
 also at the request of the user a one pixel border might be added.
 
 it only works well with tiny images. icons to be precise.
 if the image is too big you will get a jumbled mess of colored pixels.
-
-the output of the tool can be saved in a file.
-if the file is to be displayed in the terminal at a later time
-the image will be shown.
-
-main use case for me is to put a server logo icon in /etc/motd.
-so when i ssh into a server i get a strong visual cue which server it is.
 
 background information
 ----------------------
