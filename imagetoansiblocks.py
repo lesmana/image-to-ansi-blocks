@@ -23,10 +23,14 @@ no effect if --background is used.
 '''
 
 paddingattophelptext='''\
-put padding for images with uneven height at top.
+put padding at top.
 default is at bottom.
-the padding is a 1 pixel line in the background color of the terminal.
+only effective for images with uneven height.
 no effect if image has even height.
+the padding is a 1 pixel line and fully transparent.
+which means it will get the color of the terminal background.
+the padding is unaffected by --background
+and outside a possible --border.
 '''
 
 backgroundhelptext='''\
