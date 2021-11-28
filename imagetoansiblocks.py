@@ -13,14 +13,50 @@ import argparse
 from PIL import Image
 from PIL import ImageColor
 
+transparencyhelptext='''\
+threshold for transparency cut off.
+pixels with lower alpha values will become fully transparent.
+pixels with higher alpha values will become fully opaque.
+value must be between 0 and 255.
+default is 128.
+no effect if --background is used.
+'''
+
+paddingattophelptext='''\
+put padding for images with uneven height at top.
+default is at bottom.
+the padding is a 1 pixel line in the background color of the terminal.
+no effect if image has even height.
+'''
+
+backgroundhelptext='''\
+background color to flatten transparent pixels to.
+fully transparent pixels will get this color.
+semi transparent pixels will get a mixture of their color and this color.
+in the end there are only fully opaque pixels.
+no effect if image has no transparent pixels.
+'''
+
+borderhelptext='''\
+add 1 pixel border around image in given color.
+helpful if image has pixels around the edge
+that might get lost against the background color of the terminal.
+'''
+
 def parseargv():
   parser = argparse.ArgumentParser()
   parser.add_argument('filename')
-  parser.add_argument('--transparency', type=int, dest='alphathreshold', metavar='THRESHOLD')
-  parser.add_argument('--paddingattop', action='store_true')
-  parser.add_argument('--background', dest='backgroundcolor', metavar='COLOR')
-  parser.add_argument('--border', dest='bordercolor', metavar='COLOR')
-  parser.add_argument('--debug', action='store_true')
+  parser.add_argument('--transparency', type=int, dest='alphathreshold',
+        metavar='THRESHOLD',
+        help=transparencyhelptext)
+  parser.add_argument('--paddingattop', action='store_true',
+        help=paddingattophelptext)
+  parser.add_argument('--background', dest='backgroundcolor',
+        metavar='COLOR',
+        help=backgroundhelptext)
+  parser.add_argument('--border', dest='bordercolor', metavar='COLOR',
+        help=borderhelptext)
+  parser.add_argument('--debug', action='store_true', help='dump pixel values')
   args = parser.parse_args()
   return args
 
