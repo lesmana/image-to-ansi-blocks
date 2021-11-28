@@ -33,8 +33,8 @@ backgroundhelptext='''\
 background color to flatten transparent pixels to.
 fully transparent pixels will get this color.
 semi transparent pixels will get a mixture of their color and this color.
-in the end there are only fully opaque pixels.
 no effect if image has no transparent pixels.
+format for color is for example "#00FF00" or "rgb(0,255,0)" or "green".
 '''
 
 borderhelptext='''\
