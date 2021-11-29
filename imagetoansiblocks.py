@@ -49,7 +49,8 @@ that might get lost against the background color of the terminal.
 
 def parseargv():
   parser = argparse.ArgumentParser()
-  parser.add_argument('filename')
+  parser.add_argument('filename',
+        help='filename of image to translate to terminal code.')
   parser.add_argument('--transparency', type=int, dest='alphathreshold',
         metavar='THRESHOLD',
         help=transparencyhelptext)
