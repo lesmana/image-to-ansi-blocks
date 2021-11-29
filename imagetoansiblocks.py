@@ -58,9 +58,11 @@ def parseargv():
   parser.add_argument('--background', dest='backgroundcolor',
         metavar='COLOR',
         help=backgroundhelptext)
-  parser.add_argument('--border', dest='bordercolor', metavar='COLOR',
+  parser.add_argument('--border', dest='bordercolor',
+        metavar='COLOR',
         help=borderhelptext)
-  parser.add_argument('--debug', action='store_true', help='dump pixel values')
+  parser.add_argument('--debug', action='store_true',
+        help='dump pixel values')
   args = parser.parse_args()
   return args
 
